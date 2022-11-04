@@ -50,7 +50,7 @@ def main_menu():
             break
 
     if main_menu_ans == ("1"):
-        print("Booking option.")
+        collect_details()
     elif main_menu_ans == ("2"):
         print("Todays appointments.")
     elif main_menu_ans == ("3"):
@@ -59,6 +59,25 @@ def main_menu():
         print("Search by name.")
     elif main_menu_ans == ("5"):
         print("Cancelo appointment.")
+
+
+def collect_details():
+    """
+    Collects the patients details from other functions
+    and adds them to a list that can be appended to the
+    appointments sheet.
+    """
+    print("Please enter the relevant details for each category that appears.")
+    appt_categories = appointments.row_values(1)
+    appt_detail = dict.fromkeys(appt_categories)
+
+    appt_detail["Date"] = "function return value"
+    appt_detail["Time"] = "function return value"
+    appt_detail["Name"] = "function return value"
+    appt_detail["Surname"] = "function return value"
+
+    appt_details = list(appt_detail.values())
+    print(appt_details)
 
 
 main_menu()
