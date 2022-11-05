@@ -3,6 +3,7 @@ Main file to run the application.
 """
 
 # Import libraries.
+import datetime
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -25,6 +26,9 @@ visit_history = SHEET.worksheet("visit_history")
 # Variables for all data in each sheet.
 all_appts = appointments.get_all_values()
 all_visits = visit_history.get_all_values()
+
+# Global variables used in multiple functions.
+current_date = datetime.date.today()
 
 
 def main_menu():
@@ -71,13 +75,33 @@ def collect_details():
     appt_categories = appointments.row_values(1)
     appt_detail = dict.fromkeys(appt_categories)
 
-    appt_detail["Date"] = "function return value"
+    appt_detail["Date"] = get_date()
     appt_detail["Time"] = "function return value"
     appt_detail["Name"] = "function return value"
     appt_detail["Surname"] = "function return value"
 
     appt_details = list(appt_detail.values())
     print(appt_details)
+
+
+def get_date():
+    """
+    Gets the date input by the user and validates
+    that it is in correct format as well as not a past date.
+    """
+    print("Please enter appointment date in format dd/mm/yyyy.")
+
+    while True:
+        date_input = input("")
+        try:
+            date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
+        except ValueError:
+            print("Incorrect data format, should be dd/mm/yyyy")
+        else:
+            if current_date > date_fm:
+                print("Invalid date, please enter present or future date.")
+            else:
+                return date_input
 
 
 main_menu()
