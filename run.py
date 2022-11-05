@@ -31,6 +31,28 @@ all_visits = visit_history.get_all_values()
 current_date = datetime.date.today()
 
 
+def get_name(name_part):
+    """
+    Gets the patient's name input by the user and validates
+    that it contains only letters and no spaces.
+    """
+    if name_part == ("f_name"):
+        name_prompt = "first name"
+    elif name_part == ("l_name"):
+        name_prompt = "surname:"
+
+    print(f"Please enter the patients {name_prompt}")
+
+    while True:
+        pat_name = input("").capitalize()
+        if pat_name.isalpha():
+            break
+        else:
+            print("Please enter a name without spaces using only letters.")
+
+    return pat_name
+
+
 def get_appts_for_date(data, required_return):
     """
     Gets the booked appointments for the data argument provided
@@ -130,8 +152,8 @@ def collect_details():
 
     appt_detail["Date"] = get_date()
     appt_detail["Time"] = get_time(appt_detail["Date"])
-    appt_detail["Name"] = "function return value"
-    appt_detail["Surname"] = "function return value"
+    appt_detail["Name"] = get_name("f_name")
+    appt_detail["Surname"] = get_name("l_name")
 
     appt_details = list(appt_detail.values())
     print(appt_details)
