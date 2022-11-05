@@ -107,10 +107,15 @@ def get_date():
         except ValueError:
             print("Incorrect data format, should be dd/mm/yyyy")
         else:
-            if current_date > date_fm:
-                print("Invalid date, please enter present or future date.")
+            date_available = bool(get_avail_times(date_input))
+            if date_available is False:
+                print(f"Sorry, {date_input} is unavailable.")
+                print("Please enter a new date.")
             else:
-                return date_input
+                if current_date > date_fm:
+                    print("Invalid date, please enter present or future date.")
+                else:
+                    return date_input
 
 
 def collect_details():
