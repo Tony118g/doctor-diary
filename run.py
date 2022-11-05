@@ -31,6 +31,15 @@ all_visits = visit_history.get_all_values()
 current_date = datetime.date.today()
 
 
+def update_appts(data):
+    """
+    Updates the appointments sheet using the data provided.
+    """
+    print("Updating appointments...")
+    appointments.append_row(data)
+    print("Appointment booked successfully!")
+
+
 def confirm_appointment(data):
     """
     Presents the user with the appointment details entered
@@ -52,7 +61,7 @@ def confirm_appointment(data):
             break
 
     if confirmation == ("Y"):
-        print("confirmed")
+        update_appts(data)
     elif confirmation == ("N"):
         collect_details()
 
