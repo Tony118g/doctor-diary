@@ -38,9 +38,9 @@ def display_records(records, topic, heads):
     are empty then it informs the user that no records are available.
     """
     if records == []:
-        print(f"There are no appointments booked {topic}")
+        print(f"There are no appointments booked for {topic}.")
     else:
-        print(f"Below are the appointments booked {topic}")
+        print(f"Below are the appointments booked for {topic}.")
         print(tabulate(records, headers=heads, tablefmt="fancy_grid"))
 
 
@@ -117,10 +117,31 @@ def get_appts_for_date(data, required_return):
         bookings.append(booking)
         booked_times.append(booked_time)
 
-    if required_return == "Bookings":
+    if required_return == "bookings":
         return bookings
     elif required_return == "booked_times":
         return booked_times
+
+
+def search_date(specification):
+    """
+    Defines search_dte variable using current date or returned
+    date depending on the argument provided and passes it to
+    get_appts_for_date function to get the relevant records to
+    pass to the display_records function.
+    """
+    
+    if specification == "today":
+        search_dte = datetime.datetime.strftime(current_date, "%d/%m/%Y")
+        date_desc = "today"
+    elif specification == "search":
+        search_dte = get_date()
+        date_desc = f"the date {search_dte}"
+
+    dte_heads = ["Time", "Name", "Surname"]
+    date_appts = get_appts_for_date(search_dte, "bookings")
+
+    display_records(date_appts, date_desc, dte_heads)
 
 
 def get_avail_times(data):
@@ -232,17 +253,13 @@ def main_menu():
     if main_menu_ans == ("1"):
         collect_details()
     elif main_menu_ans == ("2"):
-        print("Todays appointments.")
+        search_date("today")
     elif main_menu_ans == ("3"):
-        print("Search by date.")
+        search_date("search")
     elif main_menu_ans == ("4"):
         print("Search by name.")
     elif main_menu_ans == ("5"):
         print("Cancel appointment.")
 
 
-# main_menu()
-records = ["0800", "Tony", "Guimaraes"]
-heads = ["Time", "Name", "Surname"]
-topic = "for the date 12/12/2022"
-display_records([records], topic, heads)
+main_menu()
