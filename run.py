@@ -31,98 +31,6 @@ all_visits = visit_history.get_all_values()
 current_date = datetime.date.today()
 
 
-def main_menu():
-    """
-    Displays the main menu options for the user
-    to select in order to navigate the application.
-    """
-    print("Welcome to Dentist's Diary!")
-    print("Please select an option below.")
-
-    print("(1) Book new appointment.")
-    print("(2) View today's appointments.")
-    print("(3) Search appointments by date.")
-    print("(4) Search appointments by name.")
-    print("(5) Cancel appointment.")
-
-    while True:
-        main_menu_ans = input("")
-        if main_menu_ans not in ("1", "2", "3", "4", "5"):
-            print("Invalid input.")
-            print("Please choose an option between 1 and 5")
-        else:
-            break
-
-    if main_menu_ans == ("1"):
-        collect_details()
-    elif main_menu_ans == ("2"):
-        print("Todays appointments.")
-    elif main_menu_ans == ("3"):
-        print("Search by date.")
-    elif main_menu_ans == ("4"):
-        print("Search by name.")
-    elif main_menu_ans == ("5"):
-        print("Cancelo appointment.")
-
-
-def collect_details():
-    """
-    Collects the patients details from other functions
-    and adds them to a list that can be appended to the
-    appointments sheet.
-    """
-    print("Please enter the relevant details for each category that appears.")
-    appt_categories = appointments.row_values(1)
-    appt_detail = dict.fromkeys(appt_categories)
-
-    appt_detail["Date"] = get_date()
-    appt_detail["Time"] = get_time(appt_detail["Date"])
-    appt_detail["Name"] = "function return value"
-    appt_detail["Surname"] = "function return value"
-
-    appt_details = list(appt_detail.values())
-    print(appt_details)
-
-
-def get_date():
-    """
-    Gets the date input by the user and validates
-    that it is in correct format as well as not a past date.
-    """
-    print("Please enter appointment date in format dd/mm/yyyy.")
-
-    while True:
-        date_input = input("")
-        try:
-            date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
-        except ValueError:
-            print("Incorrect data format, should be dd/mm/yyyy")
-        else:
-            if current_date > date_fm:
-                print("Invalid date, please enter present or future date.")
-            else:
-                return date_input
-
-
-def get_time(data):
-    """
-    Provides a list of available times and requests input for desired time.
-    It then validates whether it is one of the provided options and will
-    request input untill valid data is provided by the user.
-    """
-    times = get_avail_times(data)
-    print("Please enter one of the available times.")
-
-    while True:
-        print(f"Available times are:\n{', '.join(times)}")
-        time_input = input("")
-        if time_input not in times:
-            print(f"{time_input} is not a valid option.")
-            print("Please enter one of the available times in 24hr format")
-        else:
-            return time_input
-
-
 def get_appts_for_date(data, required_return):
     """
     Gets the booked appointments for the data argument provided
@@ -164,6 +72,98 @@ def get_avail_times(data):
 
     av_times = [time for time in appt_times if time not in unav_times]
     return av_times
+
+
+def get_time(data):
+    """
+    Provides a list of available times and requests input for desired time.
+    It then validates whether it is one of the provided options and will
+    request input untill valid data is provided by the user.
+    """
+    times = get_avail_times(data)
+    print("Please enter one of the available times.")
+
+    while True:
+        print(f"Available times are:\n{', '.join(times)}")
+        time_input = input("")
+        if time_input not in times:
+            print(f"{time_input} is not a valid option.")
+            print("Please enter one of the available times in 24hr format")
+        else:
+            return time_input
+
+
+def get_date():
+    """
+    Gets the date input by the user and validates
+    that it is in correct format as well as not a past date.
+    """
+    print("Please enter appointment date in format dd/mm/yyyy.")
+
+    while True:
+        date_input = input("")
+        try:
+            date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
+        except ValueError:
+            print("Incorrect data format, should be dd/mm/yyyy")
+        else:
+            if current_date > date_fm:
+                print("Invalid date, please enter present or future date.")
+            else:
+                return date_input
+
+
+def collect_details():
+    """
+    Collects the patients details from other functions
+    and adds them to a list that can be appended to the
+    appointments sheet.
+    """
+    print("Please enter the relevant details for each category that appears.")
+    appt_categories = appointments.row_values(1)
+    appt_detail = dict.fromkeys(appt_categories)
+
+    appt_detail["Date"] = get_date()
+    appt_detail["Time"] = get_time(appt_detail["Date"])
+    appt_detail["Name"] = "function return value"
+    appt_detail["Surname"] = "function return value"
+
+    appt_details = list(appt_detail.values())
+    print(appt_details)
+
+
+def main_menu():
+    """
+    Displays the main menu options for the user
+    to select in order to navigate the application.
+    """
+    print("Welcome to Dentist's Diary!")
+    print("Please select an option below.")
+
+    print("(1) Book new appointment.")
+    print("(2) View today's appointments.")
+    print("(3) Search appointments by date.")
+    print("(4) Search appointments by name.")
+    print("(5) Cancel appointment.")
+
+    while True:
+        main_menu_ans = input("")
+        if main_menu_ans not in ("1", "2", "3", "4", "5"):
+            print("Invalid input.")
+            print("Please choose an option between 1 and 5")
+        else:
+            break
+
+    if main_menu_ans == ("1"):
+        collect_details()
+    elif main_menu_ans == ("2"):
+        print("Todays appointments.")
+    elif main_menu_ans == ("3"):
+        print("Search by date.")
+    elif main_menu_ans == ("4"):
+        print("Search by name.")
+    elif main_menu_ans == ("5"):
+        print("Cancel appointment.")
 
 
 main_menu()
