@@ -76,7 +76,7 @@ def collect_details():
     appt_detail = dict.fromkeys(appt_categories)
 
     appt_detail["Date"] = get_date()
-    appt_detail["Time"] = get_time()
+    appt_detail["Time"] = get_time(appt_detail["Date"])
     appt_detail["Name"] = "function return value"
     appt_detail["Surname"] = "function return value"
 
@@ -104,13 +104,13 @@ def get_date():
                 return date_input
 
 
-def get_time():
+def get_time(data):
     """
     Provides a list of available times and requests input for desired time.
     It then validates whether it is one of the provided options and will
     request input untill valid data is provided by the user.
     """
-    times = ["0800", "0900", "1000", "1100", "1200", "1400", "1500", "1600"]
+    times = get_avail_times(data)
     print("Please enter one of the available times.")
 
     while True:
@@ -143,6 +143,27 @@ def get_appts_for_date(data, required_return):
         return bookings
     elif required_return == "booked_times":
         return booked_times
+
+
+def get_avail_times(data):
+    """
+    Gets return value from get_appts_for_date function for booked times
+    and removes them from the appointment times list to create
+    a list of available times and returns the available times.
+    """
+    appt_times = ["0800",
+                  "0900",
+                  "1000",
+                  "1100",
+                  "1200",
+                  "1400",
+                  "1500",
+                  "1600"
+                  ]
+    unav_times = get_appts_for_date(data, "booked_times")
+
+    av_times = [time for time in appt_times if time not in unav_times]
+    return av_times
 
 
 main_menu()
