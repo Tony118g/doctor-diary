@@ -123,4 +123,26 @@ def get_time():
             return time_input
 
 
+def get_appts_for_date(data, required_return):
+    """
+    Gets the booked appointments for the data argument provided
+    and returns the requested data depending on the argument given
+    for the required_return parameter.
+    """
+    date_appts = appointments.findall(data)
+
+    bookings = []
+    booked_times = []
+    for date_appt in date_appts:
+        booking = appointments.row_values(date_appt.row)
+        booked_time = booking[1]
+        bookings.append(booking)
+        booked_times.append(booked_time)
+
+    if required_return == "Bookings":
+        return bookings
+    elif required_return == "booked_times":
+        return booked_times
+
+
 main_menu()
