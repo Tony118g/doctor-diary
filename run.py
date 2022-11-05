@@ -19,13 +19,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("doctor's_diary")
 
-# Variables for each sheet in the spreadsheet.
+# Variable for sheet in the spreadsheet.
 appointments = SHEET.worksheet("appointments")
-visit_history = SHEET.worksheet("visit_history")
 
-# Variables for all data in each sheet.
+# Variable for all data in sheet.
 all_appts = appointments.get_all_values()
-all_visits = visit_history.get_all_values()
 
 # Global variables used in multiple functions.
 current_date = datetime.date.today()
