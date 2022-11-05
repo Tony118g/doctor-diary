@@ -31,6 +31,32 @@ all_visits = visit_history.get_all_values()
 current_date = datetime.date.today()
 
 
+def confirm_appointment(data):
+    """
+    Presents the user with the appointment details entered
+    and asks for final confirmation to make the booking.
+    The patient will be asked for input (Y or N) untill 
+    the input is valid.
+    """
+    print("Please confirm the following details before booking.\n")
+    print(f"{data}\n")
+    print("Enter Y to proceed or N to cancel and re-enter details.\n")
+    print("WARNING!")
+    print("Entering 'N' will cancel the appointment and data will be lost.")
+
+    while True:
+        confirmation = input("")
+        if confirmation not in ("Y", "N"):
+            print("Please input a valid option (Y/N).")
+        else:
+            break
+
+    if confirmation == ("Y"):
+        print("confirmed")
+    elif confirmation == ("N"):
+        collect_details()
+
+
 def get_name(name_part):
     """
     Gets the patient's name input by the user and validates
@@ -156,7 +182,7 @@ def collect_details():
     appt_detail["Surname"] = get_name("l_name")
 
     appt_details = list(appt_detail.values())
-    print(appt_details)
+    confirm_appointment(appt_details)
 
 
 def main_menu():
