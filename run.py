@@ -4,6 +4,7 @@ Main file to run the application.
 
 # Import libraries.
 import datetime
+from tabulate import tabulate
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -46,7 +47,7 @@ def confirm_appointment(data):
     the input is valid.
     """
     print("Please confirm the following details before booking.\n")
-    print(f"{data}\n")
+    print(tabulate([data], headers=all_appts[0], tablefmt="fancy_grid"))
     print("Enter Y to proceed or N to cancel and re-enter details.\n")
     print("WARNING!")
     print("Entering 'N' will cancel the appointment and data will be lost.")
