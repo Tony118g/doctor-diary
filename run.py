@@ -30,6 +30,20 @@ all_appts = appointments.get_all_values()
 current_date = datetime.date.today()
 
 
+def display_records(records, topic, heads):
+    """
+    Displays data in a table format using headers and data provided
+    as arguments (records and heads) and prints text about the table
+    using the argument provided to the topic parameter. If the records
+    are empty then it informs the user that no records are available.
+    """
+    if records == []:
+        print(f"There are no appointments booked {topic}")
+    else:
+        print(f"Below are the appointments booked {topic}")
+        print(tabulate(records, headers=heads, tablefmt="fancy_grid"))
+
+
 def update_appts(data):
     """
     Updates the appointments sheet using the data provided.
@@ -227,4 +241,8 @@ def main_menu():
         print("Cancel appointment.")
 
 
-main_menu()
+# main_menu()
+records = ["0800", "Tony", "Guimaraes"]
+heads = ["Time", "Name", "Surname"]
+topic = "for the date 12/12/2022"
+display_records([records], topic, heads)
