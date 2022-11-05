@@ -10,6 +10,20 @@ This program is developed to demonstrate competency in python programming and is
 
 ## User Experience
 
+### User Stories
+
+As a user, I want to be able to:
+* view informational content on how to properly use the program.
+* book a new appointment with valid details.
+   * enter a detail and have it validated before moving onto the next one.
+   * confirm all the details before making the booking.
+* view all appointments booked for the current date.
+* search for appointments under a specific name and view them.
+* search for appointments pertaining to a specific date and view them.
+* cancel a specific appointment.
+
+
+
 ## Features
 
 ## Technologies used
