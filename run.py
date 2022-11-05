@@ -76,7 +76,7 @@ def collect_details():
     appt_detail = dict.fromkeys(appt_categories)
 
     appt_detail["Date"] = get_date()
-    appt_detail["Time"] = "function return value"
+    appt_detail["Time"] = get_time()
     appt_detail["Name"] = "function return value"
     appt_detail["Surname"] = "function return value"
 
@@ -102,6 +102,25 @@ def get_date():
                 print("Invalid date, please enter present or future date.")
             else:
                 return date_input
+
+
+def get_time():
+    """
+    Provides a list of available times and requests input for desired time.
+    It then validates whether it is one of the provided options and will
+    request input untill valid data is provided by the user.
+    """
+    times = ["0800", "0900", "1000", "1100", "1200", "1400", "1500", "1600"]
+    print("Please enter one of the available times.")
+
+    while True:
+        print(f"Available times are:\n{', '.join(times)}")
+        time_input = input("")
+        if time_input not in times:
+            print(f"{time_input} is not a valid option.")
+            print("Please enter one of the available times in 24hr format")
+        else:
+            return time_input
 
 
 main_menu()
