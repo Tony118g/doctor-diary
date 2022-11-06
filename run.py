@@ -108,10 +108,15 @@ def search_name():
     search_nme = [f_name, l_name]
     name_appts = get_appts_for_name(search_nme)
 
-    name_desc = f"the name {search_nme}"
+    name_recs = []
+    for name_appt in name_appts:
+        name_rec = name_appt[0:2]
+        name_recs.append(name_rec)
+
+    name_desc = f"the name {' '.join(search_nme)}"
     name_heads = ["Date", "Time"]
 
-    display_records(name_appts, name_desc, name_heads)
+    display_records(name_recs, name_desc, name_heads)
 
 
 def get_name(name_part):
@@ -176,7 +181,12 @@ def search_date(specification):
     dte_heads = ["Time", "Name", "Surname"]
     date_appts = get_appts_for_date(search_dte, "bookings")
 
-    display_records(date_appts, date_desc, dte_heads)
+    date_recs = []
+    for date_appt in date_appts:
+        date_rec = date_appt[1:4]
+        date_recs.append(date_rec)
+
+    display_records(date_recs, date_desc, dte_heads)
 
 
 def get_avail_times(data):
