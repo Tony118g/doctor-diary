@@ -79,6 +79,20 @@ def confirm_appointment(data):
         collect_details()
 
 
+def get_appts_for_name(name):
+    """
+    Gets and returns the full names for all appointment records.
+    """
+    name_appts = []
+    for appt in all_appts[1:]:
+        appt_name = appt[2:4]
+        if appt_name == name:
+            name_appts.append(appt)
+
+    print(name_appts)
+    return name_appts
+
+
 def get_name(name_part):
     """
     Gets the patient's name input by the user and validates
@@ -262,4 +276,5 @@ def main_menu():
         print("Cancel appointment.")
 
 
-main_menu()
+# main_menu()
+get_appts_for_name(["Antony", "Guimaraes"])
