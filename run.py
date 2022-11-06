@@ -119,6 +119,7 @@ def search_name():
     name_heads = ["Date", "Time"]
 
     display_records(name_recs, name_desc, name_heads)
+    return name_appts
 
 
 def get_name(name_part):
@@ -141,6 +142,49 @@ def get_name(name_part):
             print("Please enter a name without spaces using only letters.")
 
     return pat_name
+
+
+def cancelation_prompt():
+    """
+    Calls the search_name function to get bookings relative to searched name
+    and presents them to the user. Prompts the user to enter a valid date of
+    booking they wish to cancel both for selection in case of multiple choices
+    and for confirmation of cancelation.
+    """
+    
+    appt_opts = search_name()
+    if bool(appt_opts) is False:
+        print("Press 1 to search again or 2 to return to menu.")
+        while True:
+            search_again_ans = input("")
+            if search_again_ans not in ("1", "2"):
+                print("Invalid, enter an option 1 or 2.")
+            elif search_again_ans == "1":
+                cancelation_prompt()
+                break
+            elif search_again_ans == "2":
+                main_menu()
+                break
+    else:
+        date_opts = []
+        for appt in appt_opts:
+            date_opt = appt[0]
+            date_opts.append(date_opt)
+            
+        print("Input the booking date you intend to cancel for confirmation.")
+        while True:
+            cncl_opt = get_date()
+            if cncl_opt not in date_opts:
+                print("Invalid choice, enter one of the booked dates.")
+            else:
+                break
+
+        appt_to_cncl = None
+        for appt_opt in appt_opts:
+            if str(cncl_opt) in appt_opt:
+                appt_to_cncl = appt_opt
+
+        print(appt_to_cncl)
 
 
 def get_appts_for_date(data, required_return):
@@ -306,7 +350,7 @@ def main_menu():
     elif main_menu_ans == ("4"):
         search_name()
     elif main_menu_ans == ("5"):
-        print("Cancel appointment.")
+        cancelation_prompt()
 
 
 main_menu()
