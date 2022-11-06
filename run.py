@@ -91,8 +91,27 @@ def get_appts_for_name(name):
         if appt_name == name:
             name_appts.append(appt)
 
-    print(name_appts)
     return name_appts
+
+
+def search_name():
+    """
+    Gets return values of get_name function for both name and surname
+    and defines them in a single variable (search_name) as a list
+    to pass to get_appts_for_name function and finally passes the
+    returned records to the display_records function to be displayed
+    along with relevant topic and table headers.
+    """
+
+    f_name = get_name("f_name")
+    l_name = get_name("l_name")
+    search_nme = [f_name, l_name]
+    name_appts = get_appts_for_name(search_nme)
+
+    name_desc = f"the name {search_nme}"
+    name_heads = ["Date", "Time"]
+
+    display_records(name_appts, name_desc, name_heads)
 
 
 def get_name(name_part):
@@ -273,10 +292,9 @@ def main_menu():
     elif main_menu_ans == ("3"):
         search_date("search")
     elif main_menu_ans == ("4"):
-        print("Search by name.")
+        search_name()
     elif main_menu_ans == ("5"):
         print("Cancel appointment.")
 
 
-# main_menu()
-get_appts_for_name(["Antony", "Guimaraes"])
+main_menu()
