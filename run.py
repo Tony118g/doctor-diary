@@ -81,8 +81,10 @@ def confirm_appointment(data):
 
 def get_appts_for_name(name):
     """
-    Gets and returns the full names for all appointment records.
+    Gets and returns the appointments booked for the name
+    povided as an argument.
     """
+
     name_appts = []
     for appt in all_appts[1:]:
         appt_name = appt[2:4]
