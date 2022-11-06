@@ -144,6 +144,28 @@ def get_name(name_part):
     return pat_name
 
 
+def cancel_appt(appointment):
+    """
+    Gets the row number of the appointment to cancel
+    and deletes the row from the appointments sheet
+    if the user provides final confirmation.
+    """
+    print(f"Appointment cancelation for {appointment[2]} on {appointment[0]}")
+    print("Enter 1 to proceed or 2 to stop the cancelation.")
+
+    while True:
+        cncl_confirmation = input("")
+        if cncl_confirmation not in ("1", "2"):
+            print("Invalid, enter an option 1 or 2.")
+        elif cncl_confirmation == "2":
+            main_menu()
+            break
+        elif cncl_confirmation == "1":
+            row_to_dlte = appointment[-1]
+            appointments.delete_rows(row_to_dlte)
+            break
+
+
 def cancelation_prompt():
     """
     Calls the search_name function to get bookings relative to searched name
@@ -184,7 +206,7 @@ def cancelation_prompt():
             if str(cncl_opt) in appt_opt:
                 appt_to_cncl = appt_opt
 
-        print(appt_to_cncl)
+        cancel_appt(appt_to_cncl)
 
 
 def get_appts_for_date(data, required_return):
