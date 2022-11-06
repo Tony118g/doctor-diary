@@ -10,6 +10,14 @@ This program is developed to demonstrate competency in python programming and is
 
 ## User Experience
 
+### Project Goals
+
+As the site owner, I want the program to:
+* provide information on how to use it.
+* be easy to navigate.
+* provide feedback or a response to the user when they perform a task or action.
+* provide the user with the ability to perform tasks relative to the program's purpose.
+
 ### User Stories
 
 As a user, I want to be able to:
