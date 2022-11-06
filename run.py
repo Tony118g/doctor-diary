@@ -89,7 +89,9 @@ def get_appts_for_name(name):
     for appt in all_appts[1:]:
         appt_name = appt[2:4]
         if appt_name == name:
-            name_appts.append(appt)
+            name_appt_row = [all_appts.index(appt) + 1]
+            name_appt = appt + name_appt_row
+            name_appts.append(name_appt)
 
     return name_appts
 
