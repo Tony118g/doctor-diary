@@ -67,7 +67,7 @@ def confirm_appointment(data):
     print("Entering 'N' will cancel the appointment and data will be lost.")
 
     while True:
-        confirmation = input("")
+        confirmation = input("\n")
         if confirmation not in ("Y", "N"):
             print("Please input a valid option (Y/N).")
         else:
@@ -135,7 +135,7 @@ def get_name(name_part):
     print(f"Please enter the patients {name_prompt}")
 
     while True:
-        pat_name = input("").capitalize()
+        pat_name = input("\n").capitalize()
         if pat_name.isalpha():
             break
         else:
@@ -154,7 +154,7 @@ def cancel_appt(appointment):
     print("Enter 1 to proceed or 2 to stop the cancelation.")
 
     while True:
-        cncl_confirmation = input("")
+        cncl_confirmation = input("\n")
         if cncl_confirmation not in ("1", "2"):
             print("Invalid, enter an option 1 or 2.")
         elif cncl_confirmation == "2":
@@ -178,7 +178,7 @@ def cancelation_prompt():
     if bool(appt_opts) is False:
         print("Press 1 to search again or 2 to return to menu.")
         while True:
-            search_again_ans = input("")
+            search_again_ans = input("\n")
             if search_again_ans not in ("1", "2"):
                 print("Invalid, enter an option 1 or 2.")
             elif search_again_ans == "1":
@@ -289,7 +289,7 @@ def get_time(data):
 
     while True:
         print(f"Available times are:\n{', '.join(times)}")
-        time_input = input("")
+        time_input = input("\n")
         if time_input not in times:
             print(f"{time_input} is not a valid option.")
             print("Please enter one of the available times in 24hr format")
@@ -305,7 +305,7 @@ def get_date():
     print("Please enter appointment date in format dd/mm/yyyy.")
 
     while True:
-        date_input = input("")
+        date_input = input("\n")
         try:
             date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
         except ValueError:
@@ -356,7 +356,7 @@ def main_menu():
     print("(5) Cancel appointment.")
 
     while True:
-        main_menu_ans = input("")
+        main_menu_ans = input("\n")
         if main_menu_ans not in ("1", "2", "3", "4", "5"):
             print("Invalid input.")
             print("Please choose an option between 1 and 5")
