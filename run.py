@@ -346,8 +346,8 @@ def main_menu():
     Displays the main menu options for the user
     to select in order to navigate the application.
     """
-    print("Welcome to Dentist's Diary!")
-    print("Please select an option below.")
+    print("Welcome to Doctor's Diary!\n")
+    print("Please select an option below.\n")
 
     print("(1) Book new appointment.")
     print("(2) View today's appointments.")
