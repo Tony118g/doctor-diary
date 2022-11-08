@@ -30,7 +30,12 @@ As a user, I want to be able to:
 * search for appointments pertaining to a specific date and view them.
 * cancel a specific appointment.
 
+### Program flowchart
 
+During the planning stages, I created a basic flowchart of how I wanted the program to work and interact.
+The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
+
+![flowchart-screenshot](readme-images/doctor-diary-flowchart.png)
 
 ## Features
 
