@@ -393,6 +393,32 @@ def collect_details():
         confirm_appointment(appt_details)
 
 
+def search_menu():
+    """
+    Displays options to search by date, by name or return to main menu.
+    """
+    print("What would you like to do?\n")
+
+    print("(1) Search appointments by name.")
+    print("(2) Search appointments by date.")
+    print("(3) Return to main menu.")
+
+    while True:
+        search_ans = input("\n")
+        if search_ans not in ("1", "2", "3"):
+            print("Invalid input.")
+            print("Please choose an option between 1 and 2")
+        else:
+            break
+
+    if search_ans == ("1"):
+        search_name()
+    elif search_ans == ("2"):
+        search_date("search")
+    elif search_ans == ("3"):
+        main_menu()
+
+
 def main_menu():
     """
     Displays the main menu options for the user
@@ -400,12 +426,11 @@ def main_menu():
     """
     print("Welcome to Doctor's Diary!\n")
     print("Please select an option below.\n")
-
+    
     print("(1) Book new appointment.")
     print("(2) View today's appointments.")
-    print("(3) Search appointments by date.")
-    print("(4) Search appointments by name.")
-    print("(5) Cancel appointment.")
+    print("(3) Search appointments.")
+    print("(4) Cancel appointment.")
 
     while True:
         main_menu_ans = input("\n")
@@ -420,10 +445,8 @@ def main_menu():
     elif main_menu_ans == ("2"):
         search_date("today")
     elif main_menu_ans == ("3"):
-        search_date("search")
+        search_menu()
     elif main_menu_ans == ("4"):
-        search_name()
-    elif main_menu_ans == ("5"):
         cancelation_prompt()
 
 
