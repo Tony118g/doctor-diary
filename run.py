@@ -302,9 +302,13 @@ def get_avail_times(data):
                   "1600"
                   ]
     unav_times = get_appts_for_date(data, "booked_times")
-
     av_times = [time for time in appt_times if time not in unav_times]
-    return av_times
+    if data == current_date:
+        current_time = datetime.datetime.now().strftime("%H%M")
+        today_av_times = [time for time in av_times if time > current_time]
+        return today_av_times
+    else:
+        return av_times
 
 
 def get_time(data):
