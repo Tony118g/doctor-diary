@@ -53,6 +53,34 @@ def update_appts(data):
     print("Appointment booked successfully!")
 
 
+def book_again_prompt(status):
+    """
+    Provides user with option to either re-enter details
+    or enter details for a new booking depending on
+    the confirmation status.
+    """
+  
+    if status == "terminated":
+        prompt = "Enter new details"
+    elif status == "booked":
+        prompt = "Book another appointment"
+       
+    print(f"(1) {prompt}.")
+    print("(2) Return to main menu.")
+
+    while True:
+        re_book_ans = input("")
+        if re_book_ans not in ("1", "2"):
+            print("Invalid, enter options 1 or 2.")
+        else:
+            break
+    
+    if re_book_ans == "1":
+        collect_details()
+    elif re_book_ans == "2":
+        main_menu()
+
+
 def confirm_appointment(data):
     """
     Presents the user with the appointment details entered
@@ -75,8 +103,9 @@ def confirm_appointment(data):
 
     if confirmation == ("Y"):
         update_appts(data)
+        book_again_prompt("booked")
     elif confirmation == ("N"):
-        collect_details()
+        book_again_prompt("terminated")
 
 
 def get_appts_for_name(name):
@@ -357,8 +386,9 @@ def collect_details():
     appt_details = list(appt_detail.values())
     existing_appt_check = check_existing_appts(appt_details)
     if existing_appt_check is True:
-        print("A booking for this patient already exists on this date")
+        print("A booking for this patient already exists on this date.")
         print("You can only book one appointment per day per patient.")
+        book_again_prompt("terminated")
     else:
         confirm_appointment(appt_details)
 
