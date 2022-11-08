@@ -69,7 +69,7 @@ def update_appts(data):
     Updates the appointments sheet using the data provided.
     """
     print("Updating appointments...")
-    appointments.append_row(data)
+    appointments.append_row(data, value_input_option='USER_ENTERED')
     print("Appointment booked successfully!")
 
 
@@ -166,7 +166,7 @@ def search_name(reason):
 
     name_desc = f"the name {' '.join(search_nme)}"
     name_heads = ["Date", "Time"]
-    
+
     display_records(name_recs, name_desc, name_heads, reason)
     return name_appts
 
@@ -222,7 +222,7 @@ def cancelation_prompt():
     booking they wish to cancel both for selection in case of multiple choices
     and for confirmation of cancelation.
     """
-    
+
     appt_opts = search_name("cancelation")
     if bool(appt_opts) is False:
         print("Press 1 to search again or 2 to return to menu.")
