@@ -432,6 +432,40 @@ def collect_details():
         confirm_appointment(appt_details)
 
 
+def app_info():
+    """
+    Provides the user with instructions on how to use the app.
+    Once the user has read and is satisfied, they may press enter
+    to return to the main menu.
+    """
+    clear_tmnl()
+    print("Doctor's diary is designed to make managing appointments simple!\n")
+
+    print("To book an appointment:-\n")
+    print("1 - Select option '(1)' in the menu.")
+    print("2 - Enter the details that are requested one by one.")
+    print("3 - Confirm the details to book or cancel the booking.")
+    print("NB - You can enter 'E' at any stage to stop and return to menu.\n")
+
+    print("To view today's appointments, select option '(2)' in the menu.\n")
+
+    print("To search for specific appointments:-\n ")
+    print("1 - Select option '(3)' in main menu to go to the search menu.")
+    print("2 - Select between options to search for a name or a date.")
+    print("3 - Enter the name/date you wish to search for.")
+    print("4 - View the results of your search.\n")
+
+    print("To cancel an appointment:-\n")
+
+    print("1 - Select option '(4)' in the menu.")
+    print("2 - Enter the name and surname you wish to cancel for one by one.")
+    print("3 - Enter the appointment date to cancel to select/confirm.")
+    print("4 - Provide final confirmation to cancel the appointment.")
+
+    input("Press enter to return to menu\n")
+    main_menu()
+
+
 def search_menu():
     """
     Displays options to search by date, by name or return to main menu.
@@ -464,6 +498,7 @@ def main_menu():
     Displays the main menu options for the user
     to select in order to navigate the application.
     """
+    clear_tmnl()
     print("Welcome to Doctor's Diary!\n")
     print("Please select an option below.\n")
     
@@ -471,6 +506,7 @@ def main_menu():
     print("(2) View today's appointments.")
     print("(3) Search appointments.")
     print("(4) Cancel appointment.")
+    print("(5) View application information.")
 
     while True:
         main_menu_ans = input("\n")
@@ -488,6 +524,8 @@ def main_menu():
         search_menu()
     elif main_menu_ans == ("4"):
         cancelation_prompt()
+    elif main_menu_ans == ("5"):
+        app_info()
 
 
 main_menu()
