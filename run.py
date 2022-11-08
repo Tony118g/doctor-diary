@@ -32,7 +32,7 @@ current_date = datetime.date.today()
 current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
 
 
-def display_records(records, topic, heads):
+def display_records(records, topic, heads, reason):
     """
     Displays data in a table format using headers and data provided
     as arguments (records and heads) and prints text about the table
@@ -44,6 +44,24 @@ def display_records(records, topic, heads):
     else:
         print(f"Below are the appointments booked for {topic}.")
         print(tabulate(records, headers=heads, tablefmt="fancy_grid"))
+
+    if reason == "view":
+        print("Press 1 for search menu or 2 for main menu.")
+        while True:
+            after_view_ans = input("\n")
+            if after_view_ans not in ("1", "2"):
+                print("Invalid input.")
+                print("Please choose an option between 1 and 2")
+            else:
+                break
+
+        if after_view_ans == ("1"):
+            search_menu()
+        elif after_view_ans == ("2"):
+            main_menu()
+      
+    elif reason == "cancelation":
+        pass
 
 
 def update_appts(data):
@@ -127,7 +145,7 @@ def get_appts_for_name(name):
     return name_appts
 
 
-def search_name():
+def search_name(reason):
     """
     Gets return values of get_name function for both name and surname
     and defines them in a single variable (search_name) as a list
@@ -148,8 +166,8 @@ def search_name():
 
     name_desc = f"the name {' '.join(search_nme)}"
     name_heads = ["Date", "Time"]
-
-    display_records(name_recs, name_desc, name_heads)
+    
+    display_records(name_recs, name_desc, name_heads, reason)
     return name_appts
 
 
@@ -205,7 +223,7 @@ def cancelation_prompt():
     and for confirmation of cancelation.
     """
     
-    appt_opts = search_name()
+    appt_opts = search_name("cancelation")
     if bool(appt_opts) is False:
         print("Press 1 to search again or 2 to return to menu.")
         while True:
@@ -262,7 +280,7 @@ def get_appts_for_date(data, required_return):
         return booked_times
 
 
-def search_date(specification):
+def search_date(specification, reason):
     """
     Defines search_dte variable using current date or returned
     date depending on the argument provided and passes it to
@@ -285,7 +303,7 @@ def search_date(specification):
         date_rec = date_appt[1:4]
         date_recs.append(date_rec)
 
-    display_records(date_recs, date_desc, dte_heads)
+    display_records(date_recs, date_desc, dte_heads, reason)
 
 
 def get_avail_times(data):
@@ -418,9 +436,9 @@ def search_menu():
             break
 
     if search_ans == ("1"):
-        search_name()
+        search_name("view")
     elif search_ans == ("2"):
-        search_date("search")
+        search_date("search", "view")
     elif search_ans == ("3"):
         main_menu()
 
@@ -449,7 +467,7 @@ def main_menu():
     if main_menu_ans == ("1"):
         collect_details()
     elif main_menu_ans == ("2"):
-        search_date("today")
+        search_date("today", "view")
     elif main_menu_ans == ("3"):
         search_menu()
     elif main_menu_ans == ("4"):
