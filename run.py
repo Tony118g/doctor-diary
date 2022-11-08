@@ -201,7 +201,10 @@ def get_name(name_part):
         else:
             print("Please enter a name without spaces using only letters.")
 
-    return pat_name
+    if pat_name == "Exit":
+        main_menu()
+    else:
+        return pat_name
 
 
 def cancel_appt(appointment):
@@ -356,11 +359,15 @@ def get_time(data):
     while True:
         print(f"Available times are:\n{', '.join(times)}")
         time_input = input("\n")
-        if time_input not in times:
-            print(f"{time_input} is not a valid option.")
-            print("Please enter one of the available times in 24hr format")
+        if time_input == "Exit":
+            main_menu()
+            break
         else:
-            return time_input
+            if time_input not in times:
+                print(f"{time_input} is not a valid option.")
+                print("Please enter one of the available times in 24hr format")
+            else:
+                return time_input
 
 
 def get_date():
@@ -373,20 +380,24 @@ def get_date():
 
     while True:
         date_input = input("\n")
-        try:
-            date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
-        except ValueError:
-            print("Incorrect data format, should be dd/mm/yyyy")
+        if date_input == "Exit":
+            main_menu()
+            break
         else:
-            date_available = bool(get_avail_times(date_input))
-            if date_available is False:
-                print(f"Sorry, {date_input} is unavailable.")
-                print("Please enter a new date.")
+            try:
+                date_fm = datetime.datetime.strptime(date_input, "%d/%m/%Y").date()
+            except ValueError:
+                print("Incorrect data format, should be dd/mm/yyyy")
             else:
-                if current_date > date_fm:
-                    print("Invalid date, please enter present or future date.")
+                date_available = bool(get_avail_times(date_input))
+                if date_available is False:
+                    print(f"Sorry, {date_input} is unavailable.")
+                    print("Please enter a new date.")
                 else:
-                    return date_input
+                    if current_date > date_fm:
+                        print("Invalid date, please enter present or future date.")
+                    else:
+                        return date_input
 
 
 def check_existing_appts(details):
@@ -445,7 +456,7 @@ def app_info():
     print("1 - Select option '(1)' in the menu.")
     print("2 - Enter the details that are requested one by one.")
     print("3 - Confirm the details to book or cancel the booking.")
-    print("NB - You can enter 'E' at any stage to stop and return to menu.\n")
+    print("NB - You can enter 'Exit' at any stage to stop and return to menu.\n")
 
     print("To view today's appointments, select option '(2)' in the menu.\n")
 
