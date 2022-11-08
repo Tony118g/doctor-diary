@@ -3,6 +3,7 @@ Main file to run the application.
 """
 
 # Import libraries/packages.
+import os
 import datetime
 from tabulate import tabulate
 import gspread
@@ -32,6 +33,13 @@ current_date = datetime.date.today()
 current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
 
 
+def clear_tmnl():
+    """
+    Clears the terminal when called.
+    """
+    os.system("clear")  # Idea taken from a post on slack.
+
+
 def display_records(records, topic, heads, reason):
     """
     Displays data in a table format using headers and data provided
@@ -39,6 +47,7 @@ def display_records(records, topic, heads, reason):
     using the argument provided to the topic parameter. If the records
     are empty then it informs the user that no records are available.
     """
+    clear_tmnl()
     if records == []:
         print(f"There are no appointments booked for {topic}.")
     else:
@@ -79,7 +88,7 @@ def book_again_prompt(status):
     or enter details for a new booking depending on
     the confirmation status.
     """
-  
+    clear_tmnl()
     if status == "terminated":
         prompt = "Enter new details"
     elif status == "booked":
@@ -108,6 +117,7 @@ def confirm_appointment(data):
     The patient will be asked for input (Y or N) untill 
     the input is valid.
     """
+    clear_tmnl()
     print("Please confirm the following details before booking.\n")
     print(tabulate([data], headers=all_appts[0], tablefmt="fancy_grid"))
     print("Enter Y to proceed or N to cancel and re-enter details.\n")
@@ -153,7 +163,7 @@ def search_name(reason):
     returned records to the display_records function to be displayed
     along with relevant topic and table headers.
     """
-
+    clear_tmnl()
     f_name = get_name("f_name")
     l_name = get_name("l_name")
     search_nme = [f_name, l_name]
@@ -176,6 +186,7 @@ def get_name(name_part):
     Gets the patient's name input by the user and validates
     that it contains only letters and no spaces.
     """
+    clear_tmnl()
     if name_part == ("f_name"):
         name_prompt = "first name"
     elif name_part == ("l_name"):
@@ -199,6 +210,7 @@ def cancel_appt(appointment):
     and deletes the row from the appointments sheet
     if the user provides final confirmation.
     """
+    clear_tmnl()
     print(f"Appointment cancelation for {appointment[2]} on {appointment[0]}")
     print("Enter 1 to proceed or 2 to stop the cancelation.")
 
@@ -222,7 +234,7 @@ def cancelation_prompt():
     booking they wish to cancel both for selection in case of multiple choices
     and for confirmation of cancelation.
     """
-
+    clear_tmnl()
     appt_opts = search_name("cancelation")
     if bool(appt_opts) is False:
         print("Press 1 to search again or 2 to return to menu.")
@@ -287,7 +299,7 @@ def search_date(specification, reason):
     get_appts_for_date function to get the relevant records to
     pass to the display_records function.
     """
-    
+    clear_tmnl()
     if specification == "today":
         search_dte = current_date_fmted
         date_desc = "today"
@@ -337,6 +349,7 @@ def get_time(data):
     It then validates whether it is one of the provided options and will
     request input untill valid data is provided by the user.
     """
+    clear_tmnl()
     times = get_avail_times(data)
     print("Please enter one of the available times.")
 
@@ -355,6 +368,7 @@ def get_date():
     Gets the date input by the user and validates
     that it is in correct format as well as not a past date.
     """
+    clear_tmnl()
     print("Please enter appointment date in format dd/mm/yyyy.")
 
     while True:
@@ -398,6 +412,7 @@ def collect_details():
     and adds them to a list that can be appended to the
     appointments sheet.
     """
+    clear_tmnl()
     print("Please enter the relevant details for each category that appears.")
     appt_categories = appointments.row_values(1)
     appt_detail = dict.fromkeys(appt_categories)
@@ -421,6 +436,7 @@ def search_menu():
     """
     Displays options to search by date, by name or return to main menu.
     """
+    clear_tmnl()
     print("What would you like to do?\n")
 
     print("(1) Search appointments by name.")
