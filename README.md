@@ -41,6 +41,23 @@ The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
 
 ## Technologies used
 
+* [Lucidchart](https://www.lucidchart.com/pages/).
+   * Used to create a flowchart during the planning stage.
+* [HTML5](https://html.spec.whatwg.org/)
+   * Used to add structure and content for the site.
+   * (provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template)).
+* [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+   * Used to provide styling for the site.
+   * (provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template)).
+* [Python](https://www.python.org/)
+   * Used to provide functionality to the site.
+* [Google Sheets](https://www.google.co.uk/sheets/about/)
+   * Used to host application data.
+* [Gitpod](https://www.gitpod.io/#get-started)
+   * Used to create the code and content for the repository.
+* [Github](https://github.com/)
+   * Used to host the repository.
+
 ## Python Packages
 
 ## Testing
