@@ -322,6 +322,23 @@ def get_date():
                     return date_input
 
 
+def check_existing_appts(details):
+    """
+    Check the appointment records for the name and date
+    provided and if a booking already exists for the details,
+    returns false. Otherwise returns true.
+    """
+    detail_date = details[0]
+    detail_name = details[2:4]
+    date_bookings = get_appts_for_date(detail_date, "bookings")
+
+    for booking in date_bookings:
+        if set(detail_name).issubset(booking):
+            return True
+        else:
+            return False
+
+
 def collect_details():
     """
     Collects the patients details from other functions
@@ -338,7 +355,12 @@ def collect_details():
     appt_detail["Surname"] = get_name("l_name")
 
     appt_details = list(appt_detail.values())
-    confirm_appointment(appt_details)
+    existing_appt_check = check_existing_appts(appt_details)
+    if existing_appt_check is True:
+        print("A booking for this patient already exists on this date")
+        print("You can only book one appointment per day per patient.")
+    else:
+        confirm_appointment(appt_details)
 
 
 def main_menu():
