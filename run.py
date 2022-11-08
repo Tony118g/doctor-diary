@@ -27,7 +27,10 @@ appointments = SHEET.worksheet("appointments")
 all_appts = appointments.get_all_values()
 
 # Global variables used in multiple functions.
+
 current_date = datetime.date.today()
+# Places the current date into the correct format for the program.
+current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
 
 
 def display_records(records, topic, heads):
@@ -269,7 +272,7 @@ def search_date(specification):
     """
     
     if specification == "today":
-        search_dte = datetime.datetime.strftime(current_date, "%d/%m/%Y")
+        search_dte = current_date_fmted
         date_desc = "today"
     elif specification == "search":
         search_dte = get_date()
@@ -303,7 +306,7 @@ def get_avail_times(data):
                   ]
     unav_times = get_appts_for_date(data, "booked_times")
     av_times = [time for time in appt_times if time not in unav_times]
-    if data == current_date:
+    if data == current_date_fmted:
         current_time = datetime.datetime.now().strftime("%H%M")
         today_av_times = [time for time in av_times if time > current_time]
         return today_av_times
