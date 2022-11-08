@@ -2,7 +2,7 @@
 Main file to run the application.
 """
 
-# Import libraries.
+# Import libraries/packages.
 import datetime
 from tabulate import tabulate
 import gspread
@@ -20,16 +20,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("doctor's_diary")
 
-# Variable for sheet in the spreadsheet.
-appointments = SHEET.worksheet("appointments")
-
-# Variable for all data in sheet.
-all_appts = appointments.get_all_values()
-
 # Global variables used in multiple functions.
 
+# Variable for sheet in the spreadsheet.
+appointments = SHEET.worksheet("appointments")
+# Variable for all data in appointments sheet.
+all_appts = appointments.get_all_values()
+# Stores the current date.
 current_date = datetime.date.today()
-# Places the current date into the correct format for the program.
+# Places and stores the current date into the correct format for the program.
 current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
 
 
