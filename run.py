@@ -197,10 +197,12 @@ def get_name(name_part):
 
     while True:
         pat_name = input("\n").capitalize()
-        if pat_name.isalpha():
+        if pat_name.isalpha() and len(pat_name) > 1:
             break
         else:
-            print("Please enter a name without spaces using only letters.")
+            print("Invalid input, a name must contain:")
+            print("At least 2 letters, only letters and no spaces.\n")
+            print(f"please enter a valid {name_prompt}.")
 
     if pat_name == "Exit":
         main_menu()
