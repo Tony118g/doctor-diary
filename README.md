@@ -64,6 +64,40 @@ The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
 
 ## Deployment and Development
 
+* The project was developed using [Gitpod](https://www.gitpod.io/#get-started) to create the code and files required.
+* The project files, code and information is hosted by [Github](https://github.com/).
+
+The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
+
+1. Log in to Heroku or create an account if necessary.
+2. Click on the button labeled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop down menu.
+3. Enter a unique name for the application and select the region you are in.
+   * For this project, the unique name is "doctor-diary" and the region selected is Europe.
+4. Click on "create app".
+5. Navigate to the settings tab and locate the "Config Vars" section and click "Reveal config vars".
+6. Add a config var (if project uses creds.json file.)
+   * In the "KEY" field:
+      * enter "CREDS" in capital letters.
+   * In the "VALUE" field:
+      * copy and paste the contents of your creds.json file and click "Add".
+7. Add another config var.
+   * In the "KEY" field:
+      * enter PORT in all capital letters.
+   * In the "VALUE" field:
+      * enter 8000 and click "Add".
+8. Scroll to the "Buildpacks" section and click "Add buildpack".
+9. Select Python and save changes.
+10. Add another buildpack and select Nodejs then save changes again.
+11. Ensure that the python buildpack is above the Nodejs buildpack.
+12. Navigate to the "Deploy" section by clicking the "Deploy" tab in the top navbar.
+13. Select "GitHub" as the deployment method and click "Connect to github".
+14. Search for the GitHub repository name in the search bar.
+15. Click on "connect" to link the repository to heroku.
+16. Scroll down and click on "Deploy Branch".
+17. Once the app is deployed, heroku will notify you and provide a button to view the app.
+
+NB - If you wish to rebuild the deployed app automatically everytime you push to github, you may click on "Enable Automatic Deploys".
+   
 ## Credits
 
 ## Acknowledgements
