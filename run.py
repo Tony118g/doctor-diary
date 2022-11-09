@@ -5,6 +5,7 @@ Main file to run the application.
 # Import libraries/packages.
 import os
 import datetime
+import pyinputplus as pyip
 from tabulate import tabulate
 import gspread
 from google.oauth2.service_account import Credentials
@@ -354,20 +355,29 @@ def get_time(data):
     """
     clear_tmnl()
     times = get_avail_times(data)
-    print("Please enter one of the available times.")
-
-    while True:
-        print(f"Available times are:\n{', '.join(times)}")
-        time_input = input("\n")
+    if len(times) == 1:
+        print(f"The only available time on {data} is {times[0]}.\n")
+        print("Press 1 to continue with this time or 2 to enter new a date.")
+        while True:
+            time_ans = input("")
+            if time_ans not in ("1", "2"):
+                print("invalid, pick one or two.")
+            elif time_ans == "1":
+                time_input = times[0]
+                return time_input
+            else:
+                collect_details()
+    else:
+        print(f"Below is a list of avaliable times for {data}.\n")
+        time_input = pyip.inputMenu(times,
+                                    prompt="Select a time from the list.\n",
+                                    numbered=True,
+                                    allowRegexes=[("Exit"), ("exit")]
+                                    )
         if time_input == "Exit":
             main_menu()
-            break
         else:
-            if time_input not in times:
-                print(f"{time_input} is not a valid option.")
-                print("Please enter one of the available times in 24hr format")
-            else:
-                return time_input
+            return time_input
 
 
 def get_date():
