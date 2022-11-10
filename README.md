@@ -58,7 +58,18 @@ The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
 * [Github](https://github.com/)
    * Used to host the repository.
 
-## Python Packages
+## Python Packages Used
+
+* [GSpread](https://pypi.org/project/gspread/)
+   * Used to manipulate data in google sheets.
+* [Datetime](https://docs.python.org/3/library/datetime.html)
+   * Used to manipulate dates and times.
+* [OS](https://docs.python.org/3/library/os.html)
+   * Used to clear the terminal.
+* [Tabulate](https://pypi.org/project/tabulate/)
+   * Used to present data in a table format.
+* [PyInputPlus](https://pypi.org/project/PyInputPlus/)
+   * Used to display input options as a menu and validate the selected choice.
 
 ## Testing
 
