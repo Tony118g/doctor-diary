@@ -41,7 +41,7 @@ def clear_tmnl():
     os.system("clear")  # Idea taken from a post on slack.
 
 
-def display_records(records, topic, heads, reason):
+def display_records(records, topic, heads):
     """
     Displays data in a table format using headers and data provided
     as arguments (records and heads) and prints text about the table
@@ -55,23 +55,19 @@ def display_records(records, topic, heads, reason):
         print(f"Below are the appointments booked for {topic}.")
         print(tabulate(records, headers=heads, tablefmt="fancy_grid"))
 
-    if reason == "view":
-        print("Press 1 for search menu or 2 for main menu.")
-        while True:
-            after_view_ans = input("\n")
-            if after_view_ans not in ("1", "2"):
-                print("Invalid input.")
-                print("Please choose an option between 1 and 2")
-            else:
-                break
+    print("Press 1 for search menu or 2 for main menu.")
+    while True:
+        after_view_ans = input("\n")
+        if after_view_ans not in ("1", "2"):
+            print("Invalid input.")
+            print("Please choose an option between 1 and 2")
+        else:
+            break
 
-        if after_view_ans == ("1"):
-            search_menu()
-        elif after_view_ans == ("2"):
-            main_menu()
-      
-    elif reason == "cancelation":
-        pass
+    if after_view_ans == ("1"):
+        search_menu()
+    elif after_view_ans == ("2"):
+        main_menu()
 
 
 def update_appts(data):
@@ -178,8 +174,10 @@ def search_name(reason):
     name_desc = f"the name {' '.join(search_nme)}"
     name_heads = ["Date", "Time"]
 
-    display_records(name_recs, name_desc, name_heads, reason)
-    return name_appts
+    if reason == "cancelation":
+        return [search_nme, name_appts, name_recs]
+    else:
+        display_records(name_recs, name_desc, name_heads)
 
 
 def get_name(name_part):
@@ -236,44 +234,53 @@ def cancel_appt(appointment):
 def cancelation_prompt():
     """
     Calls the search_name function to get bookings relative to searched name
-    and presents them to the user. Prompts the user to enter a valid date of
-    booking they wish to cancel both for selection in case of multiple choices
-    and for confirmation of cancelation.
+    and presents them to the user. If no bookings are present, allows user to
+    search again or return to menu. If one booking, passes it to cancel_appt
+    function for final confirmation. If multiple bookings, prompts user to
+    choose one to cancel then passes it to cancel_appt function.
     """
     clear_tmnl()
-    appt_opts = search_name("cancelation")
+    search_info = search_name("cancelation")
+    cncl_name = ' '.join(search_info[0])
+    appt_opts = search_info[1]
+    dates_and_times = search_info[2]
+
+    cncl_opts = []
+    for date_and_time in dates_and_times:
+        cncl_opt = ' at '.join(date_and_time)
+        cncl_opts.append(cncl_opt)        
+
     if bool(appt_opts) is False:
+        print(f"There are no appointments booked for {cncl_name}.\n")
         print("Press 1 to search again or 2 to return to menu.")
         while True:
             search_again_ans = input("\n")
             if search_again_ans not in ("1", "2"):
                 print("Invalid, enter an option 1 or 2.")
-            elif search_again_ans == "1":
-                cancelation_prompt()
-                break
-            elif search_again_ans == "2":
-                main_menu()
-                break
-    else:
-        date_opts = []
-        for appt in appt_opts:
-            date_opt = appt[0]
-            date_opts.append(date_opt)
-            
-        print("Input the booking date you intend to cancel for confirmation.")
-        while True:
-            cncl_opt = get_date()
-            if cncl_opt not in date_opts:
-                print("Invalid choice, enter one of the booked dates.")
             else:
                 break
+        if search_again_ans == "1":
+            cancelation_prompt()
+        elif search_again_ans == "2":
+            main_menu()
 
-        appt_to_cncl = None
-        for appt_opt in appt_opts:
-            if str(cncl_opt) in appt_opt:
-                appt_to_cncl = appt_opt
+    if len(cncl_opts) == 1:
+        appt_to_cncl = appt_opts[0]
 
-        cancel_appt(appt_to_cncl)
+    else:
+        cncl_ans = pyip.inputMenu(cncl_opts,
+                                  prompt="Select an appointment to cancel.\n",
+                                  numbered=True,
+                                  allowRegexes=[("Exit"), ("exit")]
+                                  )
+        if cncl_ans == "Exit":
+            main_menu()
+        else:
+            for appt_opt in appt_opts:
+                if cncl_ans.split(" ")[0] in appt_opt:
+                    appt_to_cncl = appt_opt
+
+    cancel_appt(appt_to_cncl)
 
 
 def get_appts_for_date(data, required_return):
@@ -298,7 +305,7 @@ def get_appts_for_date(data, required_return):
         return booked_times
 
 
-def search_date(specification, reason):
+def search_date(specification):
     """
     Defines search_dte variable using current date or returned
     date depending on the argument provided and passes it to
@@ -321,7 +328,7 @@ def search_date(specification, reason):
         date_rec = date_appt[1:4]
         date_recs.append(date_rec)
 
-    display_records(date_recs, date_desc, dte_heads, reason)
+    display_records(date_recs, date_desc, dte_heads)
 
 
 def get_avail_times(data):
@@ -511,7 +518,7 @@ def search_menu():
     if search_ans == ("1"):
         search_name("view")
     elif search_ans == ("2"):
-        search_date("search", "view")
+        search_date("search")
     elif search_ans == ("3"):
         main_menu()
 
@@ -542,7 +549,7 @@ def main_menu():
     if main_menu_ans == ("1"):
         collect_details()
     elif main_menu_ans == ("2"):
-        search_date("today", "view")
+        search_date("today")
     elif main_menu_ans == ("3"):
         search_menu()
     elif main_menu_ans == ("4"):
