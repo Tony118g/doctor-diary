@@ -38,6 +38,20 @@ def sort_sheet():
     appointments.sort((1, "asc"))
 
 
+def dlte_past_appts():
+    """
+    Removes appointment records from the sheet for dates that are in the past.
+    """
+    all_appt_dates = appointments.col_values(1)
+    for appt_date in all_appt_dates[1:]:
+        appt_date_fmt = datetime.datetime.strptime(appt_date, "%d/%m/%Y").date()
+        if appt_date_fmt < current_date:
+            date_cells = appointments.findall(appt_date)
+            for date_cell in date_cells:
+                row_num = date_cell.row
+                appointments.delete_rows(row_num)
+
+
 def clear_tmnl():
     """
     Clears the terminal when called.
