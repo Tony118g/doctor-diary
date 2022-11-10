@@ -22,12 +22,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("doctor's_diary")
 
-# Global variables used in multiple functions.
-
 # Variable for sheet in the spreadsheet.
 appointments = SHEET.worksheet("appointments")
-# Variable for all data in appointments sheet.
-all_appts = appointments.get_all_values()
 # Stores the current date.
 current_date = datetime.date.today()
 # Places and stores the current date into the correct format for the program.
@@ -115,8 +111,9 @@ def confirm_appointment(data):
     the input is valid.
     """
     clear_tmnl()
+    appt_headers = ["Date", "Time", "Name", "Surname"]
     print("Please confirm the following details before booking.\n")
-    print(tabulate([data], headers=all_appts[0], tablefmt="fancy_grid"))
+    print(tabulate([data], headers=appt_headers, tablefmt="fancy_grid"))
     print("Enter Y to proceed or N to cancel and re-enter details.\n")
     print("WARNING!")
     print("Entering 'N' will cancel the appointment and data will be lost.")
@@ -140,7 +137,7 @@ def get_appts_for_name(name):
     Gets and returns the appointments booked for the name
     povided as an argument.
     """
-
+    all_appts = appointments.get_all_values()
     name_appts = []
     for appt in all_appts[1:]:
         appt_name = appt[2:4]
