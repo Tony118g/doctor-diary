@@ -85,12 +85,12 @@ def book_again_prompt(status):
     or enter details for a new booking depending on
     the confirmation status.
     """
-    clear_tmnl()
     if status == "terminated":
         prompt = "Enter new details"
     elif status == "booked":
         prompt = "Book another appointment"
-       
+    
+    print("Please select an option below.")
     print(f"(1) {prompt}.")
     print("(2) Return to main menu.")
 
@@ -429,11 +429,14 @@ def check_existing_appts(details):
     detail_name = details[2:4]
     date_bookings = get_appts_for_date(detail_date, "bookings")
 
+    # Idea on how to implement check came from stackoverflow.
+    existing_appt = None
     for booking in date_bookings:
-        if set(detail_name).issubset(booking):
-            return True
-        else:
-            return False
+        for i in range(len(booking) - len(detail_name) + 1):
+            if detail_name == booking[i:i+len(detail_name)]:
+                existing_appt = True
+
+    return existing_appt
 
 
 def collect_details():
@@ -454,7 +457,8 @@ def collect_details():
 
     appt_details = list(appt_detail.values())
     existing_appt_check = check_existing_appts(appt_details)
-    if existing_appt_check is True:
+    if existing_appt_check:
+        clear_tmnl()
         print("A booking for this patient already exists on this date.")
         print("You can only book one appointment per day per patient.")
         book_again_prompt("terminated")
