@@ -30,6 +30,14 @@ current_date = datetime.date.today()
 current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
 
 
+def sort_sheet():
+    """
+    Sorts the sheet by dates and times.
+    """
+    appointments.sort((2, "asc"))
+    appointments.sort((1, "asc"))
+
+
 def clear_tmnl():
     """
     Clears the terminal when called.
@@ -73,6 +81,7 @@ def update_appts(data):
     print("Updating appointments...")
     appointments.append_row(data, value_input_option='USER_ENTERED')
     print("Appointment booked successfully!")
+    sort_sheet()
 
 
 def book_again_prompt(status):
