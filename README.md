@@ -20,6 +20,8 @@ As the site owner, I want the program to:
 
 ### User Stories
 
+NB - This app is intended to be used by an employee at a small medical practice. The idea is that the user will manage appointments based on requests from patients. An example is the case in which a patient phones the practice to either book or cancel an appointment and the user requests information from the patient to use in order to do so.
+
 As a user, I want to be able to:
 * view informational content on how to properly use the program.
 * book a new appointment with valid details.
@@ -34,6 +36,17 @@ As a user, I want to be able to:
 
 During the planning stages, I created a basic flowchart of how I wanted the program to work and interact.
 The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
+
+During development, I discovered a few things that needed to be added. These were mostly minor changes, however, the main adjustments that were made that were different from the flow chart were as follows:
+
+* I felt it would provide a better experience if a separate menu for search options was present.
+   * This made the content less overwhelming and cluttered and created a more organised site.
+   * After a search, the user can opt for the search menu again or for the main menu.
+* Instead of asking the user to manually input a date to choose a cancelation option, I found it was better to provide a list of options to choose from.
+   * This meant less input was required from the user making the process much faster.
+   * If only one option is available, the selection process is skipped all together.
+
+Although slight changes were made, the program generally follows the flow of the chart below and the purpose of the chart was to help me invision what I wanted to achieve and how I wanted to achieve it. It played a key role in planning and development overall.
 
 ![flowchart-screenshot](readme-images/doctor-diary-flowchart.png)
 
