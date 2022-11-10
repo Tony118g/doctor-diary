@@ -67,6 +67,8 @@ The flowchart was created using [Lucidchart](https://www.lucidchart.com/pages/).
 * The project was developed using [Gitpod](https://www.gitpod.io/#get-started) to create the code and files required.
 * The project files, code and information is hosted by [Github](https://github.com/).
 
+### Deploying the App
+
 The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
 
 1. Log in to Heroku or create an account if necessary.
@@ -97,6 +99,26 @@ The deployment of the project was done using [Heroku](https://www.heroku.com/) t
 17. Once the app is deployed, heroku will notify you and provide a button to view the app.
 
 NB - If you wish to rebuild the deployed app automatically everytime you push to github, you may click on "Enable Automatic Deploys".
+
+### Forking the Repository
+
+This can be done to create a copy of the repository. The copy can be viewed and editted without affecting the original repository.
+
+To fork the repository through GitHub, take the following steps:
+1. In the "the-everything-quiz" repository, click on the "fork" tab in the top right corner.
+2. Click on "create fork" to fork the repository.
+
+### Cloning the Repository
+
+To clone the repository through GitHub:
+
+1. In the repository, select the "code" tab located just above the list of files and next to the gitpod button.
+2. Ensure HTTPS is selected in the dropdown menu.
+3. Copy the URL under HTTPS.
+4. Open Git Bash in your IDE of choice.
+5. Change the current working directory to the location where you want the cloned directory to be created.
+6. Type "git clone" and paste the URL that was copied from the repository.
+7. Press the "enter" key to create the clone.
    
 ## Credits
 
