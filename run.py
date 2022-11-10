@@ -293,7 +293,7 @@ def cancelation_prompt():
                                   numbered=True,
                                   allowRegexes=[("Exit"), ("exit")]
                                   )
-        if cncl_ans == "Exit":
+        if cncl_ans.capitalize() == "Exit":
             main_menu()
         else:
             for appt_opt in appt_opts:
@@ -403,7 +403,7 @@ def get_time(data):
                                     numbered=True,
                                     allowRegexes=[("Exit"), ("exit")]
                                     )
-        if time_input == "Exit":
+        if time_input.capitalize() == "Exit":
             main_menu()
         else:
             return time_input
@@ -418,7 +418,7 @@ def get_date():
     print("Please enter appointment date in format dd/mm/yyyy.")
 
     while True:
-        date_input = input("\n")
+        date_input = input("\n").capitalize()
         if date_input == "Exit":
             main_menu()
             break
