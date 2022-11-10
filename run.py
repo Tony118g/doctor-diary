@@ -22,34 +22,36 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("doctor's_diary")
 
+# Global variables for app processes.
+
 # Variable for sheet in the spreadsheet.
-appointments = SHEET.worksheet("appointments")
+APPTS = SHEET.worksheet("appointments")
 # Stores the current date.
-current_date = datetime.date.today()
+CURRENT_DATE = datetime.date.today()
 # Places and stores the current date into the correct format for the program.
-current_date_fmted = datetime.datetime.strftime(current_date, "%d/%m/%Y")
+CURRENT_DATE_FMTED = datetime.datetime.strftime(CURRENT_DATE, "%d/%m/%Y")
 
 
 def sort_sheet():
     """
     Sorts the sheet by dates and times.
     """
-    appointments.sort((2, "asc"))
-    appointments.sort((1, "asc"))
+    APPTS.sort((2, "asc"))
+    APPTS.sort((1, "asc"))
 
 
 def dlte_past_appts():
     """
     Removes appointment records from the sheet for dates that are in the past.
     """
-    all_appt_dates = appointments.col_values(1)
+    all_appt_dates = APPTS.col_values(1)
     for appt_date in all_appt_dates[1:]:
         appt_date_fmt = datetime.datetime.strptime(appt_date, "%d/%m/%Y").date()
-        if appt_date_fmt < current_date:
-            date_cells = appointments.findall(appt_date)
+        if appt_date_fmt < CURRENT_DATE:
+            date_cells = APPTS.findall(appt_date)
             for date_cell in date_cells:
                 row_num = date_cell.row
-                appointments.delete_rows(row_num)
+                APPTS.delete_rows(row_num)
 
 
 def clear_tmnl():
@@ -93,7 +95,7 @@ def update_appts(data):
     Updates the appointments sheet using the data provided.
     """
     print("Updating appointments...")
-    appointments.append_row(data, value_input_option='USER_ENTERED')
+    APPTS.append_row(data, value_input_option='USER_ENTERED')
     print("Appointment booked successfully!")
     sort_sheet()
 
@@ -160,7 +162,7 @@ def get_appts_for_name(name):
     Gets and returns the appointments booked for the name
     povided as an argument.
     """
-    all_appts = appointments.get_all_values()
+    all_appts = APPTS.get_all_values()
     name_appts = []
     for appt in all_appts[1:]:
         appt_name = appt[2:4]
@@ -247,7 +249,7 @@ def cancel_appt(appointment):
             break
         elif cncl_confirmation == "1":
             row_to_dlte = appointment[-1]
-            appointments.delete_rows(row_to_dlte)
+            APPTS.delete_rows(row_to_dlte)
             break
 
 
@@ -309,12 +311,12 @@ def get_appts_for_date(data, required_return):
     and returns the requested data depending on the argument given
     for the required_return parameter.
     """
-    date_appts = appointments.findall(data)
+    date_appts = APPTS.findall(data)
 
     bookings = []
     booked_times = []
     for date_appt in date_appts:
-        booking = appointments.row_values(date_appt.row)
+        booking = APPTS.row_values(date_appt.row)
         booked_time = booking[1]
         bookings.append(booking)
         booked_times.append(booked_time)
@@ -334,7 +336,7 @@ def search_date(specification):
     """
     clear_tmnl()
     if specification == "today":
-        search_dte = current_date_fmted
+        search_dte = CURRENT_DATE_FMTED
         date_desc = "today"
     elif specification == "search":
         search_dte = get_date()
@@ -368,7 +370,7 @@ def get_avail_times(data):
                   ]
     unav_times = get_appts_for_date(data, "booked_times")
     av_times = [time for time in appt_times if time not in unav_times]
-    if data == current_date_fmted:
+    if data == CURRENT_DATE_FMTED:
         current_time = datetime.datetime.now().strftime("%H%M")
         today_av_times = [time for time in av_times if time > current_time]
         return today_av_times
@@ -433,7 +435,7 @@ def get_date():
                     print(f"Sorry, {date_input} is unavailable.")
                     print("Please enter a new date.")
                 else:
-                    if current_date > date_fm:
+                    if CURRENT_DATE > date_fm:
                         print("Invalid date, please enter present or future date.")
                     else:
                         return date_input
@@ -467,7 +469,7 @@ def collect_details():
     """
     clear_tmnl()
     print("Please enter the relevant details for each category that appears.")
-    appt_categories = appointments.row_values(1)
+    appt_categories = APPTS.row_values(1)
     appt_detail = dict.fromkeys(appt_categories)
 
     appt_detail["Date"] = get_date()
