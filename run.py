@@ -554,13 +554,17 @@ def cancel_appt(appointment):
         cncl_confirmation = input("\n")
         if cncl_confirmation not in ("1", "2"):
             print("Invalid, enter an option 1 or 2.")
-        elif cncl_confirmation == "2":
-            main_menu()
+        else:
             break
-        elif cncl_confirmation == "1":
-            row_to_dlte = appointment[-1]
-            APPTS.delete_rows(row_to_dlte)
-            break
+    if cncl_confirmation == "2":
+        main_menu()
+    elif cncl_confirmation == "1":
+        row_to_dlte = appointment[-1]
+        APPTS.delete_rows(row_to_dlte)
+        print("Appointment cancelled successfully.")
+
+    input("Press enter to return to menu.\n")
+    main_menu()
 
 
 def dlte_past_appts():
