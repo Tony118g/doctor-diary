@@ -52,13 +52,161 @@ Although slight changes were made, the program generally follows the flow of the
 
 ## Features
 
+### Existing Features
+
+Doctor's Diary is designed with features that encorperate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for user experience.
+
+However, the following features outline how the site is best designed to fit needs in its current state.
+
+* The Main Menu
+   * When the page is first loaded, the user is presented with a main menu containing options to select from depending on what they want to achieve.
+
+   ![screenshot of the main menu](readme-images/main-menu.png)
+
+* The Search Menu
+   * The search menu is displayed when the user chooses the option to search for appointments.
+   * This presents the user with options to search for specific appointments.
+      * The user can search for a specific name or a specific date.
+      * The user may also select an option to return to the main menu.
+   
+   ![screenshot of the search menu](readme-images/search-menu.png)
+
+* The Search Results Display
+   * Once the user has input a name or date for searching and if appointments are found for the search, the relevant appointments are displayed in a table to be viewed.
+      * If the user is searching for a name, only the date and time records will be shown in the table.
+      * If the user is searching for a date, only the time and name records will be shown in the table.
+   * Images for both displays are shown below.
+
+   ![screenshot of search results for date](readme-images/date-search-appts-display.png)
+   ![screenshot of search results for name](readme-images/name-search-appts-display.png)
+
+   * If no appointments are found for the date or name searched for by the user, they are informed that no appointments exist for the searched detail and are provided with options to return to the search menu to search again or return to the main menu.
+
+   ![screenshot of empty date search result](readme-images/empty-date-search-display.png)
+   ![screenshot of empty name search result](readme-images/empty-name-search-display.png)
+
+* The Display for today's appointments
+   * If the user selects the option in the main menu to view today's appointments, the same process is carried out as in the case of searching by date and the program uses the current date instead of an input date from the user.
+   * The relevant responses are given for the result of the search as seen below.
+      * If appointments are found for the current date, the records are displayed in a table.
+
+      ![screenshot of display for todays appointments](readme-images/today-appts-display.png)
+      
+      * If no appointments exist for the current date, the user is informed and given the option to return to the main menu or go to the search menu in case they would like to search for an appointment they expected to be on the current date.
+
+      ![screenshot of empty result for todays appointments](readme-images/empty-appts-today.png)
+
+* The Date Input Prompt
+   * This prompt is presented to the user whenever they select an option that requires them to input the date.
+      * Date input is required for booking a new appointment and searching for appointments by date.
+   * The prompt requests input from the user and informs them of the format they should use.
+
+   ![screenshot of date input prompt](readme-images/date-input-prompt.png)
+
+* The Time Input Prompt
+   * This prompt is presented to the user when they are booking a new appointment and need to select a time for the booking.
+      * The user is presented with the times that are available for the date they input.
+      * The times are presented in the form of a list from which the user can choose an option.
+         * This way of presenting the times creates a better user experience as it removes the need to manually input a time and it keeps the same layout as choices shown in the main menu.
+
+   ![screenshot of the time prompt](readme-images/time-input-prompt.png)
+
+* The Name Input Prompt
+   * This prompt is presented to the user whenever they select an option that requires them to input a name and surname.
+      * Name inputs are required for booking new appointments, searching appointments by name, and canceling an appointment.
+   * The contents of the prompt changes depending pn which part of the name is being input (first name or surname) as seen in the images below.
+
+   ![screenshot of first name prompt](readme-images/f-name-prompt.png)
+
+   ![screenshot of surname prompt](readme-images/surname-prompt.png)
+
+* The Booking Confirmation
+   * Once the user has entered the necessary details, the appointment details to be booked are displayed in a table and the user is asked to confirm the booking or cancel it.
+
+   ![screenshot of booking confirmation](readme-images/confirm-booking.png)
+
+   * If the user confirms the booking, they are informed that the appointment has been booked successfully and are presented with options to book another appointment or return to the maion menu.
+
+   ![screenshot of the prompt to book again](readme-images/book-another-appt-prompt.png)
+
+   * If the user cancels the booking in the confirmation prompt, they are presented with options to enter new details or return to the main menu.
+
+   ![screenshot prompt to enter new details](readme-images/enter-new-details-prompt.png)
+
+* The Cancelation Prompt
+   * When the user selects the option in the main menu to cancel an appointment, they are prompted to enter a name to search for and are then presented with a prompt to confirm the cancelation.
+      * If no appointments are found for the searched name, the user is informed and they can choose to search again or return to the menu.
+
+      ![screenshot of no results for cancelation](readme-images/no-cancel-results.png)
+
+      * If one appointment is found for the searched name, The user is presented with the appointment in question and is asked to provide confirmation to cancel it. If the user decides not to cancel the appointment, the cancelation does not occur and they return to the main menu.
+
+      ![screenshot of cancelation confirmation](readme-images/cancel-confirmation.png)
+
+      * If multiple appointments are found for the searched name, The user is presented with a list of the appointments and is asked to select one to cancel as seen in the image below.
+      * Once the user inputs a choice, they are asked to confirm the cancelation as in the image above.
+
+      ![screenshot of cancelation appointment options](readme-images/cancel-appt-options.png)
+
+* The confirmed Cancelation Display
+   * If the user confirms a cancelation, they are informed that the cancelation was successful and are prompted to press "enter" to return to the main menu.
+
+   ![screenshot of confirmed cancelation](readme-images/confirmed-cancelation.png)
+
+* The application Instructions Display
+   * Instructions on how to use the application are provided for the user.
+   * They can view these instuctions by selecting the option in the main menu to view application instructions.
+   * This feature helps the user understand how to navigate the app and how to achieve their desired goals within the app.
+
+   ![screenshot of application instructions](readme-images/app-instructions.png)
+
+* Feedback For Invalid Inputs
+Every input the user enters is validated to ensure it meets the required standards for the app. If invalid input is entered, the user is notified that it is invalid, informed on the necessary requirements for the input and requested to input new valid data.
+
+   * Feedback For Invalid Name Inputs
+      * A valid name input must:
+         * Contain only letters.
+         * Contain at least two letters.
+         * Contain no white space.
+      * If invalid input is entered for either the first name or surname, the following message is displayed.
+
+      ![screenshot of feedback for invalid first name](readme-images/invalid-f-name-feedback.png)
+      
+      ![screenshot of feedback for invalid surname](readme-images/invalid-l-name-feedback.png)
+
+   * Feedback For Invalid Date Inputs
+      * A valid date input must:
+         * Be in the format of dd/mm/yyyy.
+         * Contain realistic values for day, month, and year categories.
+      * If invalid is entered for a date, the following message is displayed.
+
+      ![screenshot of feedback for invalid date](readme-images/invalid-date-feedback.png)
+
+      * A date input must also be a present or future date.
+      * If the date is in the correct format but is a date of the past, the following message is displayed.
+
+      ![screenshot of feedback for a past date input](readme-images/past-date-feedback.png)
+   
+   * Feedback For Invalid Time input
+      * The times are presented as a list of options to choose from.
+      * If the user enters an option that is not in the list, the following message is displayed.
+
+      ![screenshot of feedback for invalid time input](readme-images/invalid-time-feedback.png)
+
+* Feedback For Invalid Option Input
+   * Throughout the site, the user is presented with options to choose from.
+   * If the user inputs data that is not part of the available options, they are informed and asked to input an option within the given range.
+   * An example of this is shown below for the main menu options.
+
+   ![screenshot of feedback for invalid option input](readme-images/invalid-option-feedback.png)
+
 ## Technologies used
 
 * [Lucidchart](https://www.lucidchart.com/pages/).
    * Used to create a flowchart during the planning stage.
 * [HTML5](https://html.spec.whatwg.org/)
    * Used to add structure and content for the site.
-   * (provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template)).
+   * (provided in the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template)).
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
    * Used to provide styling for the site.
    * (provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template)).
