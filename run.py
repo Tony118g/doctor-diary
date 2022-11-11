@@ -45,7 +45,7 @@ def main_menu():
     print("(2) View today's appointments.")
     print("(3) Search appointments.")
     print("(4) Cancel appointment.")
-    print("(5) View application information.")
+    print("(5) View application instructions.")
 
     while True:
         main_menu_ans = input("\n")
@@ -102,7 +102,6 @@ def app_info():
     to return to the main menu.
     """
     clear_tmnl()
-    print("Doctor's Diary is designed to make managing appointments simple!\n")
 
     print("To book an appointment:")
     print("1 - Select option '(1)' in the menu.")
@@ -539,7 +538,7 @@ def cancelation_prompt():
         appt_to_cncl = appt_opts[0]
 
     else:
-        print(f"Below are a list of appointments for the name {cncl_name}.\n")
+        print(f"Below is a list of appointments for the name {cncl_name}.\n")
         cncl_ans = pyip.inputMenu(cncl_opts,
                                   prompt="Select an appointment to cancel.\n",
                                   numbered=True,
