@@ -519,6 +519,7 @@ def cancelation_prompt():
         cncl_opt = ' at '.join(date_and_time)
         cncl_opts.append(cncl_opt)
 
+    clear_tmnl()
     if bool(appt_opts) is False:
         print(f"There are no appointments booked for {cncl_name}.\n")
         print("Enter 1 to search again or 2 to return to menu.")
@@ -538,6 +539,7 @@ def cancelation_prompt():
         appt_to_cncl = appt_opts[0]
 
     else:
+        print(f"Below are a list of appointments for the name {cncl_name}.\n")
         cncl_ans = pyip.inputMenu(cncl_opts,
                                   prompt="Select an appointment to cancel.\n",
                                   numbered=True,
