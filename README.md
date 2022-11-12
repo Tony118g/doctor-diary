@@ -223,6 +223,26 @@ NB - The app is intended for a single user or a small number of users performing
 
    ![screenshot of feedback for invalid option input](assets/readme-images/invalid-option-feedback.png)
 
+* #### Background Features
+
+   During the running of the program, a few background features take place. These features include:
+
+   * Sorting the spreadsheet.
+      * Whenever the app is run or new data is added to the spreadsheet, the sheet is sorted by date and then by time.
+      * This helps keep tidy records that are easier to view and understand.
+   
+   * Deleting past appointments
+      * Each time the app is run, any appointments that contain dates in the past are deleted.
+      * This also helps keep tidy records and ensures that no unnecessary records are being kept.
+
+### Future Features
+
+Features to be implemented in the future may include:
+* A feature to record which member of staff entered the details for a given appointment.
+   * This would be for a case where there is more than one user.
+* Patient contact details being part of the booking details so that the medical practice can get in contact with them on the day of booking.
+   * A feature whereby the patient is automatically emailed a reminder of the appointment is also an option to implement for this.
+
 ## Technologies used
 
 * [Lucidchart](https://www.lucidchart.com/pages/).
