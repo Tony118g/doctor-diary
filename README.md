@@ -174,6 +174,7 @@ NB - The app is intended for a single user or a small number of users performing
       * The user is presented with the times that are available for the date they input.
       * The times are presented in the form of a list from which the user can choose an option.
          * This way of presenting the times creates a better user experience as it removes the need to manually input a time and it keeps the same layout as choices shown in the main menu.
+      * If the appointment being booked is for the current date, only available times that are in the future are listed as options.
 
    ![screenshot of the time prompt](assets/readme-images/time-input-prompt.png)
 
@@ -204,6 +205,11 @@ NB - The app is intended for a single user or a small number of users performing
    ![screenshot prompt to enter new details](assets/readme-images/enter-new-details-prompt.png)
 
 [Back to top](#contents)
+
+* #### The Unavailable Date Display
+   * If the user enters a date for an appointment booking and there are no times available for that date, they are informed that it is unavailable and are prompted to enter a new date.
+
+   ![screenshot of the message displayed when an appointment date is fully booked](assets/readme-images/fully-booked-message.png)
 
 * #### The Already Booked Display
    * If the user enters details to book an appointment but an appointment has already been booked for the name and date input, they are informed that they cannot book more than one appointment on the same day for one patient and are given options to enter new details or return to the main menu.
@@ -404,6 +410,7 @@ As a user, I want to be able to:
 * book a new appointment with valid details.
    * An option is available in the main menu to book a new appointment.
    * The user is prompted for details and is provided with information on the requirements for valid input.
+   * The user can move on to the next detail only once a valid input has been made.
    * The user is presented with the final details for confirmation and they can choose to make the booking or cancel it.
    * The user can opt to book another appointment after a booking has been made without having to return to the main menu.
 * view all appointments booked for the current date.
@@ -497,7 +504,7 @@ NB - If you wish to rebuild the deployed app automatically every time you push t
 This can be done to create a copy of the repository. The copy can be viewed and edited without affecting the original repository.
 
 To fork the repository through GitHub, take the following steps:
-1. In the "the-everything-quiz" repository, click on the "fork" tab in the top right corner.
+1. In the "doctor-diary" repository, click on the "fork" tab in the top right corner.
 2. Click on "create fork" to fork the repository.
 
 [Back to top](#contents)
