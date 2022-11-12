@@ -530,8 +530,21 @@ I followed the steps in a video from the [Code Institute](https://codeinstitute.
    
 ## Credits
 
+* I used [this video](https://www.youtube.com/watch?v=WTll5p4N7hE) from [Code Institute](https://codeinstitute.net/global/) to learn how to create and link APIs.
+* I got an idea of how to implement code to check if a list is part of another list in the same order from this [stackoverflow post](https://stackoverflow.com/questions/36016174/how-to-check-if-a-list-is-in-another-list-with-the-same-order-python).
+* I got the idea on how to use the [OS](https://docs.python.org/3/library/os.html) module to clear the terminal from a slack post by Matt Rudge.
+* I used the [Favicon Generator](https://www.favicongenerator.com/) to create a favicon for the site.
+* I got advice on how to implement the favicon correctly from a fellow Code Institute student, Paul Young.
+
 [Back to top](#contents)
 
 ## Acknowledgements
+
+This site was developed as a third portfolio project for the Code Institute course in Full Stack Software Development. I would like to thank the following for all of the support throughout the development phase.
+
+* The Code Institute community, including fellow students and staff.
+* My mentor, [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for providing me with advice through the development process.
+
+Antony Guimaraes 2022
 
 [Back to top](#contents)
