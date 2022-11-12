@@ -137,7 +137,7 @@ def collect_details():
     appt_categories = APPTS.row_values(1)
     appt_detail = dict.fromkeys(appt_categories)
 
-    appt_detail["Date"] = get_date()
+    appt_detail["Date"] = get_date("book")
     appt_detail["Time"] = get_time(appt_detail["Date"])
     appt_detail["Name"] = get_name("f_name")
     appt_detail["Surname"] = get_name("l_name")
@@ -153,7 +153,7 @@ def collect_details():
         confirm_appointment(appt_details)
 
 
-def get_date():
+def get_date(reason):
     """
     Gets the date input from the user and validates that it is in correct
     format, is not a past date and is available for booking. Requests
@@ -177,16 +177,21 @@ def get_date():
                 print("- Contain realistic values for day, month and year.\n")
                 print("Please input a valid date.")
             else:
-                date_available = bool(get_avail_times(date_input))
-                if date_available is False:
-                    print(f"Sorry, {date_input} is unavailable.")
-                    print("Please enter a new date.")
-                else:
-                    if CURRENT_DATE > date_fm:
-                        print("Invalid date input (past date).\n")
-                        print("Please enter a present or future date.")
+                if reason == "book":
+                    date_available = bool(get_avail_times(date_input))
+                    if date_available is False:
+                        print(f"Sorry, {date_input} is unavailable.")
+                        print("Please enter a new date.")
                     else:
-                        return date_input
+                        if CURRENT_DATE > date_fm:
+                            print("Invalid date input (past date).\n")
+                            print("Please enter a present or future date.")
+                        else:
+                            break
+                elif reason == "search":
+                    break
+
+    return date_input
 
 
 def get_time(data):
@@ -432,7 +437,7 @@ def search_date(specification):
         search_dte = CURRENT_DATE_FMTED
         date_desc = "today"
     elif specification == "search":
-        search_dte = get_date()
+        search_dte = get_date("search")
         date_desc = f"the date {search_dte}"
 
     dte_heads = ["Time", "Name", "Surname"]
