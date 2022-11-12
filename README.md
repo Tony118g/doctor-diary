@@ -50,11 +50,15 @@ Although slight changes were made, the program generally follows the flow of the
 
 ![flowchart-screenshot](assets/readme-images/doctor-diary-flowchart.png)
 
+## Data Storage (Google Sheets)
+
+The data for the application regarding appointments is stored in a google sheet. You can view the sheet [here](https://docs.google.com/spreadsheets/d/1VkeaoTuB1Q7BGQGjlcbhL3MWXIfrlZjKsobsegOslpQ/edit?usp=sharing).
+
 ## Features
 
 ### Existing Features
 
-Doctor's Diary is designed with features that encorperate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python as a CLI app. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for a better user experience.
+Doctor's Diary is designed with features thincorporateate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python as a CLI app. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for a better user experience.
 
 However, the following features outline how the site is best designed to fit needs in its current state.
 
@@ -310,6 +314,16 @@ To clone the repository through GitHub:
 5. Change the current working directory to the location where you want the cloned directory to be created.
 6. Type "git clone" and paste the URL that was copied from the repository.
 7. Press the "enter" key to create the clone.
+
+### APIs 
+In order for the app to function properly, APIs need to be set up and connected. In particular, the following APIs were used for this project:
+
+* Google Drive API.
+   * This helps with getting credentials to access the files within google drive.
+* Google Sheets API.
+   * This is the API for the google sheets where the data is stored for the program.
+
+I followed the steps in a video from the [Code Institute](https://codeinstitute.net/global/) Love Sandwiches project on how to set up and connect APIs. The link to this video is [here](https://www.youtube.com/watch?v=WTll5p4N7hE).
    
 ## Credits
 
