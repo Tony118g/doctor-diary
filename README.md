@@ -2,6 +2,50 @@
 
 Doctor's Diary is a CLI data automation program designed to run on a mock terminal in Heroku. The program is aimed at helping a small medical practice manage and keep track of patient appointments.
 
+View the live site [here](https://doctor-diary.herokuapp.com/).
+
+![screenshot of the live site](assets/readme-images/live-site-screenshot.png)
+
+## Contents
+
+* [Purpose](#purpose)
+* [User Experience](#user-experience)
+   * [Project Goals](#project-goals)
+   * [User Stories](#user-stories)
+   * [Program Flowchart](#program-flowchart)
+* [Data Storage](#data-storage-google-sheets)
+* [Features](#features)
+   * [Existing Features](#existing-features)
+      * [The Main Menu](#the-main-menu)
+      * [The Search Menu](#the-search-menu)
+      * [The Search Results Display](#the-search-results-display)
+      * [The Display For Today's Appointments](#the-display-for-todays-appointments)
+      * [The Date Input Prompt](#the-date-input-prompt)
+      * [The Time Input Prompt](#the-time-input-prompt)
+      * [The Name Input Prompt](#the-name-input-prompt)
+      * [The Booking Confirmation](#the-booking-confirmation)
+      * [The Already Booked Display](#the-already-booked-display)
+      * [The Cancelation Prompt](#the-cancelation-prompt)
+      * [The confirmed Cancelation Display](#the-confirmed-cancelation-display)
+      * [The Application Instructions Display](#the-application-instructions-display)
+      * [The Emergency Exit Option](#the-emergency-exit-option)
+      * [Feedback For Invalid Inputs](#feedback-for-invalid-inputs)
+      * [Background Features](#background-features)
+   * [Future Features](#future-features)
+* [Technologies Used](#technologies-used)
+* [Python Packages Used](#python-packages-used)
+* [Testing](#testing)
+   * [Python PEP8 Validation](#python-pep8-validation)
+   * [Testing User Stories](#testing-user-stories)
+   * [Development Bugs](#development-bugs)
+* [Deployment and Development](#deployment-and-development)
+   * [Deploying the App](#deploying-the-app)
+   * [Forking The Repository](#forking-the-repository)
+   * [Cloning The Repository](#cloning-the-repository)
+   * [APIs](#apis)
+* [Credits](#credits)
+* [Acknowledgements](#acknowledgements)
+
 ## Purpose
 
 The purpose of this program is to make appointment booking and record tracking easier and faster for the user. It provides the ability to input data that has been validated and retrieve specific data upon request. It is intended to enable the user to easily create, delete and view specific records. 
@@ -18,6 +62,8 @@ As the site owner, I want the program to:
 * provide feedback or a response to the user when they perform a task or action.
 * provide the user with the ability to perform tasks relative to the program's purpose.
 
+[Back to top](#contents)
+
 ### User Stories
 
 NB - This app is intended to be used by an employee at a small medical practice. The idea is that the user will manage appointments based on requests from patients. An example is the case in which a patient phones the practice to either book or cancel an appointment and the user requests information from the patient to use in order to do so.
@@ -31,6 +77,8 @@ As a user, I want to be able to:
 * search for appointments under a specific name and view them.
 * search for appointments pertaining to a specific date and view them.
 * cancel a specific appointment.
+
+[Back to top](#contents)
 
 ### Program flowchart
 
@@ -49,6 +97,8 @@ During development, I discovered a few things that needed to be added. These wer
 Although slight changes were made, the program generally follows the flow of the chart below and the purpose of the chart was to help me invision what I wanted to achieve and how I wanted to achieve it. It played a key role in planning and development overall.
 
 ![flowchart-screenshot](assets/readme-images/doctor-diary-flowchart.png)
+
+[Back to top](#contents)
 
 ## Data Storage (Google Sheets)
 
@@ -69,6 +119,8 @@ NB - The app is intended for a single user or a small number of users performing
 
    ![screenshot of the main menu](assets/readme-images/main-menu.png)
 
+[Back to top](#contents)
+
 * #### The Search Menu
    * The search menu is displayed when the user chooses the option to search for appointments.
    * This presents the user with options to search for specific appointments.
@@ -76,6 +128,8 @@ NB - The app is intended for a single user or a small number of users performing
       * The user may also select an option to return to the main menu.
    
    ![screenshot of the search menu](assets/readme-images/search-menu.png)
+
+[Back to top](#contents)
 
 * #### The Search Results Display
    * Once the user has input a name or date for searching and if appointments are found for the search, the relevant appointments are displayed in a table to be viewed.
@@ -91,7 +145,9 @@ NB - The app is intended for a single user or a small number of users performing
    ![screenshot of empty date search result](assets/readme-images/empty-date-search-display.png)
    ![screenshot of empty name search result](assets/readme-images/empty-name-search-display.png)
 
-* #### The Display for today's appointments
+[Back to top](#contents)
+
+* #### The Display For Today's Appointments
    * If the user selects the option in the main menu to view today's appointments, the same process is carried out as in the case of searching by date and the program uses the current date instead of an input date from the user.
    * The relevant responses are given for the result of the search as seen below.
       * If appointments are found for the current date, the records are displayed in a table.
@@ -102,12 +158,16 @@ NB - The app is intended for a single user or a small number of users performing
 
       ![screenshot of empty result for todays appointments](assets/readme-images/empty-appts-today.png)
 
+[Back to top](#contents)
+
 * #### The Date Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input the date.
       * Date input is required for booking a new appointment and searching for appointments by date.
    * The prompt requests input from the user and informs them of the format they should use.
 
    ![screenshot of date input prompt](assets/readme-images/date-input-prompt.png)
+
+[Back to top](#contents)
 
 * #### The Time Input Prompt
    * This prompt is presented to the user when they are booking a new appointment and need to select a time for the booking.
@@ -117,6 +177,8 @@ NB - The app is intended for a single user or a small number of users performing
 
    ![screenshot of the time prompt](assets/readme-images/time-input-prompt.png)
 
+[Back to top](#contents)
+
 * #### The Name Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input a name and surname.
       * Name inputs are required for booking new appointments, searching appointments by name, and canceling an appointment.
@@ -125,6 +187,8 @@ NB - The app is intended for a single user or a small number of users performing
    ![screenshot of first name prompt](assets/readme-images/f-name-prompt.png)
 
    ![screenshot of surname prompt](assets/readme-images/surname-prompt.png)
+
+[Back to top](#contents)
 
 * #### The Booking Confirmation
    * Once the user has entered the necessary details, the appointment details to be booked are displayed in a table and the user is asked to confirm the booking or cancel it.
@@ -139,11 +203,15 @@ NB - The app is intended for a single user or a small number of users performing
 
    ![screenshot prompt to enter new details](assets/readme-images/enter-new-details-prompt.png)
 
+[Back to top](#contents)
+
 * #### The Already Booked Display
    * If the user enters details to book an appointment but an appointment has already been booked for the name and date input, they are informed that they cannot book more than one appointment on the same day for one patient and are given options to enter new details or return to the main menu.
    * This prevents a single patient from having multiple unnecessary appointments on the same day, making them unavailable for other patients.
 
    ![screenshot of the message displayed when an appointment date and name is already booked](assets/readme-images/already-booked-message.png)
+
+[Back to top](#contents)
 
 * #### The Cancelation Prompt
    * When the user selects the option in the main menu to cancel an appointment, they are prompted to enter a name to search for and are then presented with a prompt to confirm the cancelation.
@@ -160,17 +228,23 @@ NB - The app is intended for a single user or a small number of users performing
 
       ![screenshot of cancelation appointment options](assets/readme-images/cancel-appt-options.png)
 
+[Back to top](#contents)
+
 * #### The confirmed Cancelation Display
    * If the user confirms a cancelation, they are informed that the cancelation was successful and are prompted to press "enter" to return to the main menu.
 
    ![screenshot of confirmed cancelation](assets/readme-images/confirmed-cancelation.png)
 
-* #### The application Instructions Display
+[Back to top](#contents)
+
+* #### The Application Instructions Display
    * Instructions on how to use the application are provided for the user.
    * They can view these instuctions by selecting the option in the main menu to view application instructions.
    * This feature helps the user understand how to navigate the app and how to achieve their desired goals within the app.
 
    ![screenshot of application instructions](assets/readme-images/app-instructions.png)
+
+[Back to top](#contents)
 
 * #### The Emergency Exit Option
    * This is an option provided for the user to be able to exit a booking process or cancelation process while entering details.
@@ -180,6 +254,7 @@ NB - The app is intended for a single user or a small number of users performing
    * The availability of this option is made clear in the application instructions display as seen above.
       * I did not include a print statement in every input prompt outlining the option to exit as it would create lengthy and repetitive messages for the user. I felt it was sufficient just to mention it in the application instructions especially as the site is only intended for a single user or a smaller number of users as mentioned at the beginning of the [features](#features) section. I felt this created a better user experience overall.
 
+[Back to top](#contents)
 
 * #### Feedback For Invalid Inputs
 
@@ -196,6 +271,8 @@ NB - The app is intended for a single user or a small number of users performing
       
       ![screenshot of feedback for invalid surname](assets/readme-images/invalid-l-name-feedback.png)
 
+[Back to top](#contents)
+
    * Feedback For Invalid Date Inputs
       * A valid date input must:
          * Be in the format of dd/mm/yyyy.
@@ -208,6 +285,8 @@ NB - The app is intended for a single user or a small number of users performing
       * If the date is in the correct format but is a date of the past, the following message is displayed.
 
       ![screenshot of feedback for a past date input](assets/readme-images/past-date-feedback.png)
+
+[Back to top](#contents)
    
    * Feedback For Invalid Time input
       * The times are presented as a list of options to choose from.
@@ -216,12 +295,16 @@ NB - The app is intended for a single user or a small number of users performing
 
       ![screenshot of feedback for invalid time input](assets/readme-images/invalid-time-feedback.png)
 
+[Back to top](#contents)
+
 * Feedback For Invalid Option Input
    * Throughout the site, the user is presented with options to choose from.
    * If the user inputs data that is not part of the available options, they are informed and asked to input an option within the given range.
    * An example of this is shown below for the main menu options.
 
    ![screenshot of feedback for invalid option input](assets/readme-images/invalid-option-feedback.png)
+
+[Back to top](#contents)
 
 * #### Background Features
 
@@ -235,6 +318,8 @@ NB - The app is intended for a single user or a small number of users performing
       * Each time the app is run, any appointments that contain dates in the past are deleted.
       * This also helps keep tidy records and ensures that no unnecessary records are being kept.
 
+[Back to top](#contents)
+
 ### Future Features
 
 Features to be implemented in the future may include:
@@ -242,6 +327,8 @@ Features to be implemented in the future may include:
    * This would be for a case where there is more than one user.
 * Patient contact details being part of the booking details so that the medical practice can get in contact with them on the day of booking.
    * A feature whereby the patient is automatically emailed a reminder of the appointment is also an option to implement for this.
+
+[Back to top](#contents)
 
 ## Technologies used
 
@@ -262,6 +349,8 @@ Features to be implemented in the future may include:
 * [Github](https://github.com/)
    * Used to host the repository.
 
+[Back to top](#contents)
+
 ## Python Packages Used
 
 * [GSpread](https://pypi.org/project/gspread/)
@@ -275,9 +364,12 @@ Features to be implemented in the future may include:
 * [PyInputPlus](https://pypi.org/project/PyInputPlus/)
    * Used to display input options as a menu and validate the selected choice.
 
+[Back to top](#contents)
+
 ## Testing
 
 Various tests were carried out for this project.
+
 NB: HTML, CSS and JavaScript were provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) and are not in scope for this project as well as the aspect of responsive design, therefore they were not taken into consideration.
 
 ### Python PEP8 Validation
@@ -299,6 +391,8 @@ When I used the PEP8 validator on my code, a few issues were raised which are sh
 Once these issues were resolved, no errors or warnings were shown for my code (run.py).
 
 NB - Some warnings were shown in relation to the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) (gitpod.yml), however, these were not in scope for this project and had no impact on the running of the app so they were not addressed.
+
+[Back to top](#contents)
 
 ### Testing User Stories
 
@@ -325,6 +419,8 @@ As a user, I want to be able to:
    * This enables the user to cancel an appointment for a specific name and date.
 
 Throughout the application, the user can return to the main menu in order to select a different option and perform a new task.
+
+[Back to top](#contents)
 
 ### Development Bugs
 
@@ -353,6 +449,8 @@ The problems encountered during development are shown below.
    * This was because the variable that referenced the google sheet was declared globally and therefore any new data was not returned to the function that fetched data from the sheet.
    * This was resolved by declaring the variable locally within the appropriate function instead of globally so that data returned was always up to date.
    * The variable had no need at this point of development to be declared globally and so this change did not affect the rest of the application.
+
+[Back to top](#contents)
 
 ## Deployment and Development
 
@@ -392,7 +490,9 @@ The deployment of the project was done using [Heroku](https://www.heroku.com/) t
 
 NB - If you wish to rebuild the deployed app automatically everytime you push to github, you may click on "Enable Automatic Deploys".
 
-### Forking the Repository
+[Back to top](#contents)
+
+### Forking The Repository
 
 This can be done to create a copy of the repository. The copy can be viewed and editted without affecting the original repository.
 
@@ -400,7 +500,9 @@ To fork the repository through GitHub, take the following steps:
 1. In the "the-everything-quiz" repository, click on the "fork" tab in the top right corner.
 2. Click on "create fork" to fork the repository.
 
-### Cloning the Repository
+[Back to top](#contents)
+
+### Cloning The Repository
 
 To clone the repository through GitHub:
 
@@ -412,6 +514,8 @@ To clone the repository through GitHub:
 6. Type "git clone" and paste the URL that was copied from the repository.
 7. Press the "enter" key to create the clone.
 
+[Back to top](#contents)
+
 ### APIs 
 In order for the app to function properly, APIs need to be set up and connected. In particular, the following APIs were used for this project:
 
@@ -421,7 +525,13 @@ In order for the app to function properly, APIs need to be set up and connected.
    * This is the API for the google sheets where the data is stored for the program.
 
 I followed the steps in a video from the [Code Institute](https://codeinstitute.net/global/) Love Sandwiches project on how to set up and connect APIs. The link to this video is [here](https://www.youtube.com/watch?v=WTll5p4N7hE).
+
+[Back to top](#contents)
    
 ## Credits
 
+[Back to top](#contents)
+
 ## Acknowledgements
+
+[Back to top](#contents)
