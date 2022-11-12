@@ -48,7 +48,7 @@ During development, I discovered a few things that needed to be added. These wer
 
 Although slight changes were made, the program generally follows the flow of the chart below and the purpose of the chart was to help me invision what I wanted to achieve and how I wanted to achieve it. It played a key role in planning and development overall.
 
-![flowchart-screenshot](readme-images/doctor-diary-flowchart.png)
+![flowchart-screenshot](assets/readme-images/doctor-diary-flowchart.png)
 
 ## Features
 
@@ -63,7 +63,7 @@ NB - The app is intended for a single user or a small number of users performing
 * #### The Main Menu
    * When the page is first loaded, the user is presented with a main menu containing options to select from depending on what they want to achieve.
 
-   ![screenshot of the main menu](readme-images/main-menu.png)
+   ![screenshot of the main menu](assets/readme-images/main-menu.png)
 
 * #### The Search Menu
    * The search menu is displayed when the user chooses the option to search for appointments.
@@ -71,7 +71,7 @@ NB - The app is intended for a single user or a small number of users performing
       * The user can search for a specific name or a specific date.
       * The user may also select an option to return to the main menu.
    
-   ![screenshot of the search menu](readme-images/search-menu.png)
+   ![screenshot of the search menu](assets/readme-images/search-menu.png)
 
 * #### The Search Results Display
    * Once the user has input a name or date for searching and if appointments are found for the search, the relevant appointments are displayed in a table to be viewed.
@@ -79,31 +79,31 @@ NB - The app is intended for a single user or a small number of users performing
       * If the user is searching for a date, only the time and name records will be shown in the table.
    * Images for both displays are shown below.
 
-   ![screenshot of search results for date](readme-images/date-search-appts-display.png)
-   ![screenshot of search results for name](readme-images/name-search-appts-display.png)
+   ![screenshot of search results for date](assets/readme-images/date-search-appts-display.png)
+   ![screenshot of search results for name](assets/readme-images/name-search-appts-display.png)
 
    * If no appointments are found for the date or name searched for by the user, they are informed that no appointments exist for the searched detail and are provided with options to return to the search menu to search again or return to the main menu.
 
-   ![screenshot of empty date search result](readme-images/empty-date-search-display.png)
-   ![screenshot of empty name search result](readme-images/empty-name-search-display.png)
+   ![screenshot of empty date search result](assets/readme-images/empty-date-search-display.png)
+   ![screenshot of empty name search result](assets/readme-images/empty-name-search-display.png)
 
 * #### The Display for today's appointments
    * If the user selects the option in the main menu to view today's appointments, the same process is carried out as in the case of searching by date and the program uses the current date instead of an input date from the user.
    * The relevant responses are given for the result of the search as seen below.
       * If appointments are found for the current date, the records are displayed in a table.
 
-      ![screenshot of display for todays appointments](readme-images/today-appts-display.png)
+      ![screenshot of display for todays appointments](assets/readme-images/today-appts-display.png)
       
       * If no appointments exist for the current date, the user is informed and given the option to return to the main menu or go to the search menu in case they would like to search for an appointment they expected to be on the current date.
 
-      ![screenshot of empty result for todays appointments](readme-images/empty-appts-today.png)
+      ![screenshot of empty result for todays appointments](assets/readme-images/empty-appts-today.png)
 
 * #### The Date Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input the date.
       * Date input is required for booking a new appointment and searching for appointments by date.
    * The prompt requests input from the user and informs them of the format they should use.
 
-   ![screenshot of date input prompt](readme-images/date-input-prompt.png)
+   ![screenshot of date input prompt](assets/readme-images/date-input-prompt.png)
 
 * #### The Time Input Prompt
    * This prompt is presented to the user when they are booking a new appointment and need to select a time for the booking.
@@ -111,62 +111,62 @@ NB - The app is intended for a single user or a small number of users performing
       * The times are presented in the form of a list from which the user can choose an option.
          * This way of presenting the times creates a better user experience as it removes the need to manually input a time and it keeps the same layout as choices shown in the main menu.
 
-   ![screenshot of the time prompt](readme-images/time-input-prompt.png)
+   ![screenshot of the time prompt](assets/readme-images/time-input-prompt.png)
 
 * #### The Name Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input a name and surname.
       * Name inputs are required for booking new appointments, searching appointments by name, and canceling an appointment.
    * The contents of the prompt changes depending on which part of the name is being input (first name or surname) as seen in the images below.
 
-   ![screenshot of first name prompt](readme-images/f-name-prompt.png)
+   ![screenshot of first name prompt](assets/readme-images/f-name-prompt.png)
 
-   ![screenshot of surname prompt](readme-images/surname-prompt.png)
+   ![screenshot of surname prompt](assets/readme-images/surname-prompt.png)
 
 * #### The Booking Confirmation
    * Once the user has entered the necessary details, the appointment details to be booked are displayed in a table and the user is asked to confirm the booking or cancel it.
 
-   ![screenshot of booking confirmation](readme-images/confirm-booking.png)
+   ![screenshot of booking confirmation](assets/readme-images/confirm-booking.png)
 
    * If the user confirms the booking, they are informed that the appointment has been booked successfully and are presented with options to book another appointment or return to the maion menu.
 
-   ![screenshot of the prompt to book again](readme-images/book-another-appt-prompt.png)
+   ![screenshot of the prompt to book again](assets/readme-images/book-another-appt-prompt.png)
 
    * If the user cancels the booking in the confirmation prompt, they are presented with options to enter new details or return to the main menu.
 
-   ![screenshot prompt to enter new details](readme-images/enter-new-details-prompt.png)
+   ![screenshot prompt to enter new details](assets/readme-images/enter-new-details-prompt.png)
 
 * #### The Already Booked Display
    * If the user enters details to book an appointment but an appointment has already been booked for the name and date input, they are informed that they cannot book more than one appointment on the same day for one patient and are given options to enter new details or return to the main menu.
    * This prevents a single patient from having multiple unnecessary appointments on the same day, making them unavailable for other patients.
 
-   ![screenshot of the message displayed when an appointment date and name is already booked](readme-images/already-booked-message.png)
+   ![screenshot of the message displayed when an appointment date and name is already booked](assets/readme-images/already-booked-message.png)
 
 * #### The Cancelation Prompt
    * When the user selects the option in the main menu to cancel an appointment, they are prompted to enter a name to search for and are then presented with a prompt to confirm the cancelation.
       * If no appointments are found for the searched name, the user is informed and they can choose to search again or return to the menu.
 
-      ![screenshot of no results for cancelation](readme-images/no-cancel-results.png)
+      ![screenshot of no results for cancelation](assets/readme-images/no-cancel-results.png)
 
       * If one appointment is found for the searched name, The user is presented with the appointment in question and is asked to provide confirmation to cancel it. If the user decides not to cancel the appointment, the cancelation does not occur and they return to the main menu.
 
-      ![screenshot of cancelation confirmation](readme-images/cancel-confirmation.png)
+      ![screenshot of cancelation confirmation](assets/readme-images/cancel-confirmation.png)
 
       * If multiple appointments are found for the searched name, The user is presented with a list of the appointments and is asked to select one to cancel as seen in the image below.
       * Once the user inputs a choice, they are asked to confirm the cancelation as in the image above.
 
-      ![screenshot of cancelation appointment options](readme-images/cancel-appt-options.png)
+      ![screenshot of cancelation appointment options](assets/readme-images/cancel-appt-options.png)
 
 * #### The confirmed Cancelation Display
    * If the user confirms a cancelation, they are informed that the cancelation was successful and are prompted to press "enter" to return to the main menu.
 
-   ![screenshot of confirmed cancelation](readme-images/confirmed-cancelation.png)
+   ![screenshot of confirmed cancelation](assets/readme-images/confirmed-cancelation.png)
 
 * #### The application Instructions Display
    * Instructions on how to use the application are provided for the user.
    * They can view these instuctions by selecting the option in the main menu to view application instructions.
    * This feature helps the user understand how to navigate the app and how to achieve their desired goals within the app.
 
-   ![screenshot of application instructions](readme-images/app-instructions.png)
+   ![screenshot of application instructions](assets/readme-images/app-instructions.png)
 
 * #### The Emergency Exit Option
    * This is an option provided for the user to be able to exit a booking process or cancelation process while entering details.
@@ -188,9 +188,9 @@ NB - The app is intended for a single user or a small number of users performing
          * Contain no white space.
       * If invalid input is entered for either the first name or surname, the following message is displayed.
 
-      ![screenshot of feedback for invalid first name](readme-images/invalid-f-name-feedback.png)
+      ![screenshot of feedback for invalid first name](assets/readme-images/invalid-f-name-feedback.png)
       
-      ![screenshot of feedback for invalid surname](readme-images/invalid-l-name-feedback.png)
+      ![screenshot of feedback for invalid surname](assets/readme-images/invalid-l-name-feedback.png)
 
    * Feedback For Invalid Date Inputs
       * A valid date input must:
@@ -198,26 +198,26 @@ NB - The app is intended for a single user or a small number of users performing
          * Contain realistic values for day, month, and year categories.
       * If invalid input is entered for a date, the following message is displayed.
 
-      ![screenshot of feedback for invalid date](readme-images/invalid-date-feedback.png)
+      ![screenshot of feedback for invalid date](assets/readme-images/invalid-date-feedback.png)
 
       * If the date input is for the purpose of booking a new appointment, it must also be for a present or future date.
       * If the date is in the correct format but is a date of the past, the following message is displayed.
 
-      ![screenshot of feedback for a past date input](readme-images/past-date-feedback.png)
+      ![screenshot of feedback for a past date input](assets/readme-images/past-date-feedback.png)
    
    * Feedback For Invalid Time input
       * The times are presented as a list of options to choose from.
       * If the user enters an option that is not in the list, the following message is displayed.
          * Note that the same validation process is carried out when a user needs to select an appointment to cancel from a list of options.
 
-      ![screenshot of feedback for invalid time input](readme-images/invalid-time-feedback.png)
+      ![screenshot of feedback for invalid time input](assets/readme-images/invalid-time-feedback.png)
 
 * Feedback For Invalid Option Input
    * Throughout the site, the user is presented with options to choose from.
    * If the user inputs data that is not part of the available options, they are informed and asked to input an option within the given range.
    * An example of this is shown below for the main menu options.
 
-   ![screenshot of feedback for invalid option input](readme-images/invalid-option-feedback.png)
+   ![screenshot of feedback for invalid option input](assets/readme-images/invalid-option-feedback.png)
 
 ## Technologies used
 
