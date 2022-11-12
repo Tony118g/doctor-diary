@@ -54,16 +54,18 @@ Although slight changes were made, the program generally follows the flow of the
 
 ### Existing Features
 
-Doctor's Diary is designed with features that encorperate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for user experience.
+Doctor's Diary is designed with features that encorperate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python as a CLI app. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for a better user experience.
 
 However, the following features outline how the site is best designed to fit needs in its current state.
 
-* The Main Menu
+NB - The app is intended for a single user or a small number of users performing the same job at a medical practice.
+
+* #### The Main Menu
    * When the page is first loaded, the user is presented with a main menu containing options to select from depending on what they want to achieve.
 
    ![screenshot of the main menu](readme-images/main-menu.png)
 
-* The Search Menu
+* #### The Search Menu
    * The search menu is displayed when the user chooses the option to search for appointments.
    * This presents the user with options to search for specific appointments.
       * The user can search for a specific name or a specific date.
@@ -71,7 +73,7 @@ However, the following features outline how the site is best designed to fit nee
    
    ![screenshot of the search menu](readme-images/search-menu.png)
 
-* The Search Results Display
+* #### The Search Results Display
    * Once the user has input a name or date for searching and if appointments are found for the search, the relevant appointments are displayed in a table to be viewed.
       * If the user is searching for a name, only the date and time records will be shown in the table.
       * If the user is searching for a date, only the time and name records will be shown in the table.
@@ -85,7 +87,7 @@ However, the following features outline how the site is best designed to fit nee
    ![screenshot of empty date search result](readme-images/empty-date-search-display.png)
    ![screenshot of empty name search result](readme-images/empty-name-search-display.png)
 
-* The Display for today's appointments
+* #### The Display for today's appointments
    * If the user selects the option in the main menu to view today's appointments, the same process is carried out as in the case of searching by date and the program uses the current date instead of an input date from the user.
    * The relevant responses are given for the result of the search as seen below.
       * If appointments are found for the current date, the records are displayed in a table.
@@ -96,14 +98,14 @@ However, the following features outline how the site is best designed to fit nee
 
       ![screenshot of empty result for todays appointments](readme-images/empty-appts-today.png)
 
-* The Date Input Prompt
+* #### The Date Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input the date.
       * Date input is required for booking a new appointment and searching for appointments by date.
    * The prompt requests input from the user and informs them of the format they should use.
 
    ![screenshot of date input prompt](readme-images/date-input-prompt.png)
 
-* The Time Input Prompt
+* #### The Time Input Prompt
    * This prompt is presented to the user when they are booking a new appointment and need to select a time for the booking.
       * The user is presented with the times that are available for the date they input.
       * The times are presented in the form of a list from which the user can choose an option.
@@ -111,16 +113,16 @@ However, the following features outline how the site is best designed to fit nee
 
    ![screenshot of the time prompt](readme-images/time-input-prompt.png)
 
-* The Name Input Prompt
+* #### The Name Input Prompt
    * This prompt is presented to the user whenever they select an option that requires them to input a name and surname.
       * Name inputs are required for booking new appointments, searching appointments by name, and canceling an appointment.
-   * The contents of the prompt changes depending pn which part of the name is being input (first name or surname) as seen in the images below.
+   * The contents of the prompt changes depending on which part of the name is being input (first name or surname) as seen in the images below.
 
    ![screenshot of first name prompt](readme-images/f-name-prompt.png)
 
    ![screenshot of surname prompt](readme-images/surname-prompt.png)
 
-* The Booking Confirmation
+* #### The Booking Confirmation
    * Once the user has entered the necessary details, the appointment details to be booked are displayed in a table and the user is asked to confirm the booking or cancel it.
 
    ![screenshot of booking confirmation](readme-images/confirm-booking.png)
@@ -133,7 +135,13 @@ However, the following features outline how the site is best designed to fit nee
 
    ![screenshot prompt to enter new details](readme-images/enter-new-details-prompt.png)
 
-* The Cancelation Prompt
+* #### The Already Booked Display
+   * If the user enters details to book an appointment but an appointment has already been booked for the name and date input, they are informed that they cannot book more than one appointment on the same day for one patient and are given options to enter new details or return to the main menu.
+   * This prevents a single patient from having multiple unnecessary appointments on the same day, making them unavailable for other patients.
+
+   ![screenshot of the message displayed when an appointment date and name is already booked](readme-images/already-booked-message.png)
+
+* #### The Cancelation Prompt
    * When the user selects the option in the main menu to cancel an appointment, they are prompted to enter a name to search for and are then presented with a prompt to confirm the cancelation.
       * If no appointments are found for the searched name, the user is informed and they can choose to search again or return to the menu.
 
@@ -148,20 +156,30 @@ However, the following features outline how the site is best designed to fit nee
 
       ![screenshot of cancelation appointment options](readme-images/cancel-appt-options.png)
 
-* The confirmed Cancelation Display
+* #### The confirmed Cancelation Display
    * If the user confirms a cancelation, they are informed that the cancelation was successful and are prompted to press "enter" to return to the main menu.
 
    ![screenshot of confirmed cancelation](readme-images/confirmed-cancelation.png)
 
-* The application Instructions Display
+* #### The application Instructions Display
    * Instructions on how to use the application are provided for the user.
    * They can view these instuctions by selecting the option in the main menu to view application instructions.
    * This feature helps the user understand how to navigate the app and how to achieve their desired goals within the app.
 
    ![screenshot of application instructions](readme-images/app-instructions.png)
 
-* Feedback For Invalid Inputs
-Every input the user enters is validated to ensure it meets the required standards for the app. If invalid input is entered, the user is notified that it is invalid, informed on the necessary requirements for the input and requested to input new valid data.
+* #### The Emergency Exit Option
+   * This is an option provided for the user to be able to exit a booking process or cancelation process while entering details.
+   * To stop the processes, the user can input "Exit" when asked for any detail.
+   * If they do this, they automatically return to the main menu and the process is ended.
+   * This creates a better user experience by providing a way to exit a booking or cancelation process at any stage instead of having to wait untill the end to cancel it.
+   * The availability of this option is made clear in the application instructions display as seen above.
+      * I did not include a print statement in every input prompt outlining the option to exit as it would create lengthy and repetitive messages for the user. I felt it was sufficient just to mention it in the application instructions especially as the site is only intended for a single user or a smaller number of users as mentioned at the beginning of the [features](#features) section. I felt this created a better user experience overall.
+
+
+* #### Feedback For Invalid Inputs
+
+   Every input the user enters is validated to ensure it meets the required standards for the app. If invalid input is entered, the user is notified that it is invalid, informed on the necessary requirements for the input and requested to input new valid data.
 
    * Feedback For Invalid Name Inputs
       * A valid name input must:
@@ -178,11 +196,11 @@ Every input the user enters is validated to ensure it meets the required standar
       * A valid date input must:
          * Be in the format of dd/mm/yyyy.
          * Contain realistic values for day, month, and year categories.
-      * If invalid is entered for a date, the following message is displayed.
+      * If invalid input is entered for a date, the following message is displayed.
 
       ![screenshot of feedback for invalid date](readme-images/invalid-date-feedback.png)
 
-      * A date input must also be a present or future date.
+      * If the date input is for the purpose of booking a new appointment, it must also be for a present or future date.
       * If the date is in the correct format but is a date of the past, the following message is displayed.
 
       ![screenshot of feedback for a past date input](readme-images/past-date-feedback.png)
@@ -190,6 +208,7 @@ Every input the user enters is validated to ensure it meets the required standar
    * Feedback For Invalid Time input
       * The times are presented as a list of options to choose from.
       * If the user enters an option that is not in the list, the following message is displayed.
+         * Note that the same validation process is carried out when a user needs to select an appointment to cancel from a list of options.
 
       ![screenshot of feedback for invalid time input](readme-images/invalid-time-feedback.png)
 
