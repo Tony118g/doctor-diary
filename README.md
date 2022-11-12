@@ -277,6 +277,83 @@ Features to be implemented in the future may include:
 
 ## Testing
 
+Various tests were carried out for this project.
+NB: HTML, CSS and JavaScript were provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) and are not in scope for this project as well as the aspect of responsive design, therefore they were not taken into consideration.
+
+### Python PEP8 Validation
+
+During the development of this project, PEP8online.com was down and therefore I resorted to adding a PEP8 validator to the Gitpod Workspace. This was done using the "pip3 install pycodestyle" command in the terminal and adjusting settings to use it to validate my code.
+
+When I used the PEP8 validator on my code, a few issues were raised which are shown in the image below.:
+
+![screenshot of issues found by PEP8 validator](assets/readme-images/errors-screenshot.png)
+
+* Line too long.
+   * This error was raised as a result of the line of code being too long.
+   * This was resolved by adjusting the content of print statements and structure of code to fit within the correct line length.
+* Blank line contains white space.
+   * This is a self explanatory warning and was resolved by removing the white spaces on blank lines.
+* Trailing whitespace.
+   * This is also self expalanatory and was resolved by removing the white space at the end of the lines in question.
+
+Once these issues were resolved, no errors or warnings were shown for my code (run.py).
+
+NB - Some warnings were shown in relation to the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) (gitpod.yml), however, these were not in scope for this project and had no impact on the running of the app so they were not addressed.
+
+### Testing User Stories
+
+As a user, I want to be able to:
+* view informational content on how to properly use the program.
+   * There is a main menu option dedicated to displaying instructions on how to use the application.
+   * Prompts for input are clear and worded well to ensure the user knows how to respond.
+   * Feedback is given for any wrong input to ensure the user knows how to input correct data.
+* book a new appointment with valid details.
+   * An option is available in the main menu to book a new appointment.
+   * The user is prompted for details and is provided with information on the requirements for valid input.
+   * The user is presented with the final details for confirmation and they can choose to make the booking or cancel it.
+   * The user can opt to book another appointment after a booking has been made without having to return to the main menu.
+* view all appointments booked for the current date.
+   * An option is available in the main menu to view appointments for the curret date and automatically responds to the request without hving to input the date.
+* search for appointments under a specific name and view them.
+   * The user can navigate to the search menu and select the option to search by name.
+   * This enables the user to enter any name they wish to search for and view the results of their search.
+* search for appointments pertaining to a specific date and view them.
+   * The user can navigate to the search menu and select the option to search by date.
+   * This enables the user to enter any date they wish to search for and view the results of their search.
+* cancel a specific appointment.
+   * In the main menu is an option to cancel an appointment.
+   * This enables the user to cancel an appointment for a specific name and date.
+
+Throughout the application, the user can return to the main menu in order to select a different option and perform a new task.
+
+### Development Bugs
+
+During development, manual testing was carried out for each feature. A few problems were found and resolved. The final outcome was that all features worked as intended as can be seen in the [features section](#features).
+
+The problems encountered during development are shown below.
+
+* When booking a new appointment for the current date, the user was able to book a time that had already passed.
+   * This was resolved by adding an if statement to check if the date entered is the current date and if it is, removing times that are in the past from the list of available times.
+   * I used the [Datetime](https://docs.python.org/3/library/datetime.html) module to carry out these checks.
+
+* When data was added to the spreadsheet for a new appointment, the date was being added as a string rather than a date.
+   * This was resolved by adding "value_input_option='USER_ENTERED'" to the append_row method of [GSpread](https://pypi.org/project/gspread/) when a new row of data was being added to the sheet.
+
+* When details were entered for a new appointment, the program checks if the name has been booked for the specified date already. This worked to an extent however it did not check for name order. For example:
+
+   If the name entered was "Michael Shawn", and an appointment existed for the name "Shawn Michael", the program would return that an appointment has already been booked even though the name is in a different order and could be a different person.
+   * This issue was resolved by adding a for loop with an if statement to check if the name exists on the date in the same order as the name entered.
+
+* When searching for appointments on a specific date, the user was unable to enter a date if it was fully booked.
+   * This was because the search and booking processes shared the same validation check.
+   * This was resolved by adding a parameter to the function that validated the date input and depending on the argument provided it would either allow a date input even if it was fully booked (for the search process) or it would not allow the input if the date was fully booked (for booking purposes).
+   * This was done using an if statement to execute different code depending on the argument provided.
+
+* Once the user had booked a new appointment, if they searched for the date or name within the booked appointment, the recorsd would not be displayed untill the app was run again and refreshed.
+   * This was because the variable that referenced the google sheet was declared globally and therefore any new data was not returned to the function that fetched data from the sheet.
+   * This was resolved by declaring the variable locally within the appropriate function instead of globally so that data returned was always up to date.
+   * The variable had no need at this point of development to be declared globally and so this change did not affect the rest of the application.
+
 ## Deployment and Development
 
 * The project was developed using [Gitpod](https://www.gitpod.io/#get-started) to create the code and files required.
