@@ -66,12 +66,12 @@ As the site owner, I want the program to:
 
 ### User Stories
 
-NB - This app is intended to be used by an employee at a small medical practice. The idea is that the user will manage appointments based on requests from patients. An example is the case in which a patient phones the practice to either book or cancel an appointment and the user requests information from the patient to use in order to do so.
+NB - This app is intended to be used by an employee at a small medical practice. The idea is that the user will manage appointments based on requests from patients. An example is a case in which a patient phones the practice to either book or cancel an appointment and the user requests information from the patient to use in order to do so.
 
 As a user, I want to be able to:
 * view informational content on how to properly use the program.
 * book a new appointment with valid details.
-   * enter a detail and have it validated before moving onto the next one.
+   * enter a detail and have it validated before moving on to the next one.
    * confirm all the details before making the booking.
 * view all appointments booked for the current date.
 * search for appointments under a specific name and view them.
@@ -92,9 +92,9 @@ During development, I discovered a few things that needed to be added. These wer
    * After a search, the user can opt for the search menu again or for the main menu.
 * Instead of asking the user to manually input a date to choose a cancelation option, I found it was better to provide a list of options to choose from.
    * This meant less input was required from the user making the process much faster.
-   * If only one option is available, the selection process is skipped all together.
+   * If only one option is available, the selection process is skipped altogether.
 
-Although slight changes were made, the program generally follows the flow of the chart below and the purpose of the chart was to help me invision what I wanted to achieve and how I wanted to achieve it. It played a key role in planning and development overall.
+Although slight changes were made, the program generally follows the flow of the chart below and the purpose of the chart was to help me envision what I wanted to achieve and how I wanted to achieve it. It played a key role in planning and development overall.
 
 ![flowchart-screenshot](assets/readme-images/doctor-diary-flowchart.png)
 
@@ -108,14 +108,14 @@ The data for the application regarding appointments is stored in a google sheet.
 
 ### Existing Features
 
-Doctor's Diary is designed with features thincorporateate the purpose of the site. The design and display of the site is limitted by factors such as the terminal size and the fact that it is done primarily using python as a CLI app. If the site were to encorporate an interface other than the command line interface for user interaction, a few improvements could be made for a better user experience.
+Doctor's Diary is designed with features that incorporate the purpose of the site. The design and display of the site is limited by factors such as the terminal size and the fact that it is done primarily using python as a CLI app. If the site were to incorporate an interface other than the command line interface for user interaction, a few improvements could be made for a better user experience.
 
 However, the following features outline how the site is best designed to fit needs in its current state.
 
 NB - The app is intended for a single user or a small number of users performing the same job at a medical practice.
 
 * #### The Main Menu
-   * When the page is first loaded, the user is presented with a main menu containing options to select from depending on what they want to achieve.
+   * When the page is first loaded, the user is presented with the main menu containing options to select from depending on what they want to achieve.
 
    ![screenshot of the main menu](assets/readme-images/main-menu.png)
 
@@ -195,7 +195,7 @@ NB - The app is intended for a single user or a small number of users performing
 
    ![screenshot of booking confirmation](assets/readme-images/confirm-booking.png)
 
-   * If the user confirms the booking, they are informed that the appointment has been booked successfully and are presented with options to book another appointment or return to the maion menu.
+   * If the user confirms the booking, they are informed that the appointment has been booked successfully and are presented with options to book another appointment or return to the main menu.
 
    ![screenshot of the prompt to book again](assets/readme-images/book-another-appt-prompt.png)
 
@@ -207,7 +207,7 @@ NB - The app is intended for a single user or a small number of users performing
 
 * #### The Already Booked Display
    * If the user enters details to book an appointment but an appointment has already been booked for the name and date input, they are informed that they cannot book more than one appointment on the same day for one patient and are given options to enter new details or return to the main menu.
-   * This prevents a single patient from having multiple unnecessary appointments on the same day, making them unavailable for other patients.
+   * This prevents a single patient from having multiple unnecessary appointments on the same day, making them unavailable to other patients.
 
    ![screenshot of the message displayed when an appointment date and name is already booked](assets/readme-images/already-booked-message.png)
 
@@ -239,7 +239,7 @@ NB - The app is intended for a single user or a small number of users performing
 
 * #### The Application Instructions Display
    * Instructions on how to use the application are provided for the user.
-   * They can view these instuctions by selecting the option in the main menu to view application instructions.
+   * They can view these instructions by selecting the option in the main menu to view application instructions.
    * This feature helps the user understand how to navigate the app and how to achieve their desired goals within the app.
 
    ![screenshot of application instructions](assets/readme-images/app-instructions.png)
@@ -250,7 +250,7 @@ NB - The app is intended for a single user or a small number of users performing
    * This is an option provided for the user to be able to exit a booking process or cancelation process while entering details.
    * To stop the processes, the user can input "Exit" when asked for any detail.
    * If they do this, they automatically return to the main menu and the process is ended.
-   * This creates a better user experience by providing a way to exit a booking or cancelation process at any stage instead of having to wait untill the end to cancel it.
+   * This creates a better user experience by providing a way to exit a booking or cancelation process at any stage instead of having to wait until the end to cancel it.
    * The availability of this option is made clear in the application instructions display as seen above.
       * I did not include a print statement in every input prompt outlining the option to exit as it would create lengthy and repetitive messages for the user. I felt it was sufficient just to mention it in the application instructions especially as the site is only intended for a single user or a smaller number of users as mentioned at the beginning of the [features](#features) section. I felt this created a better user experience overall.
 
@@ -258,7 +258,7 @@ NB - The app is intended for a single user or a small number of users performing
 
 * #### Feedback For Invalid Inputs
 
-   Every input the user enters is validated to ensure it meets the required standards for the app. If invalid input is entered, the user is notified that it is invalid, informed on the necessary requirements for the input and requested to input new valid data.
+   Every input the user enters is validated to ensure it meets the required standards for the app. If invalid input is entered, the user is notified that it is invalid, informed of the necessary requirements for the input, and requested to input new valid data.
 
    * Feedback For Invalid Name Inputs
       * A valid name input must:
@@ -339,7 +339,7 @@ Features to be implemented in the future may include:
    * (provided in the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template)).
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
    * Used to provide styling for the site.
-   * (provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template)).
+   * (provided in the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template)).
 * [Python](https://www.python.org/)
    * Used to provide functionality to the site.
 * [Google Sheets](https://www.google.co.uk/sheets/about/)
@@ -370,7 +370,7 @@ Features to be implemented in the future may include:
 
 Various tests were carried out for this project.
 
-NB: HTML, CSS and JavaScript were provided in the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) and are not in scope for this project as well as the aspect of responsive design, therefore they were not taken into consideration.
+NB - HTML, CSS, and JavaScript were provided in the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template) and are not in scope for this project as well as the aspect of responsive design, therefore they were not taken into consideration.
 
 ### Python PEP8 Validation
 
@@ -382,15 +382,15 @@ When I used the PEP8 validator on my code, a few issues were raised which are sh
 
 * Line too long.
    * This error was raised as a result of the line of code being too long.
-   * This was resolved by adjusting the content of print statements and structure of code to fit within the correct line length.
+   * This was resolved by adjusting the content of print statements and the structure of code to fit within the correct line length.
 * Blank line contains white space.
-   * This is a self explanatory warning and was resolved by removing the white spaces on blank lines.
+   * This is a self-explanatory warning and was resolved by removing the white spaces on blank lines.
 * Trailing whitespace.
-   * This is also self expalanatory and was resolved by removing the white space at the end of the lines in question.
+   * This is also self-explanatory and was resolved by removing the white space at the end of the lines in question.
 
 Once these issues were resolved, no errors or warnings were shown for my code (run.py).
 
-NB - Some warnings were shown in relation to the [code intitute template](https://github.com/Code-Institute-Org/python-essentials-template) (gitpod.yml), however, these were not in scope for this project and had no impact on the running of the app so they were not addressed.
+NB - Some warnings were shown in relation to the [code institute template](https://github.com/Code-Institute-Org/python-essentials-template) (gitpod.yml), however, these were not in scope for this project and had no impact on the running of the app so they were not addressed.
 
 [Back to top](#contents)
 
@@ -407,7 +407,7 @@ As a user, I want to be able to:
    * The user is presented with the final details for confirmation and they can choose to make the booking or cancel it.
    * The user can opt to book another appointment after a booking has been made without having to return to the main menu.
 * view all appointments booked for the current date.
-   * An option is available in the main menu to view appointments for the curret date and automatically responds to the request without hving to input the date.
+   * An option is available in the main menu to view appointments for the current date and automatically responds to the request without having to input the date.
 * search for appointments under a specific name and view them.
    * The user can navigate to the search menu and select the option to search by name.
    * This enables the user to enter any name they wish to search for and view the results of their search.
@@ -445,9 +445,9 @@ The problems encountered during development are shown below.
    * This was resolved by adding a parameter to the function that validated the date input and depending on the argument provided it would either allow a date input even if it was fully booked (for the search process) or it would not allow the input if the date was fully booked (for booking purposes).
    * This was done using an if statement to execute different code depending on the argument provided.
 
-* Once the user had booked a new appointment, if they searched for the date or name within the booked appointment, the recorsd would not be displayed untill the app was run again and refreshed.
+* Once the user had booked a new appointment, if they searched for the date or name within the booked appointment, the records would not be displayed until the app was run again and refreshed.
    * This was because the variable that referenced the google sheet was declared globally and therefore any new data was not returned to the function that fetched data from the sheet.
-   * This was resolved by declaring the variable locally within the appropriate function instead of globally so that data returned was always up to date.
+   * This was resolved by declaring the variable locally within the appropriate function instead of globally so that the data returned was always up to date.
    * The variable had no need at this point of development to be declared globally and so this change did not affect the rest of the application.
 
 [Back to top](#contents)
@@ -455,19 +455,19 @@ The problems encountered during development are shown below.
 ## Deployment and Development
 
 * The project was developed using [Gitpod](https://www.gitpod.io/#get-started) to create the code and files required.
-* The project files, code and information is hosted by [Github](https://github.com/).
+* The project files, code, and information are hosted by [Github](https://github.com/).
 
 ### Deploying the App
 
 The deployment of the project was done using [Heroku](https://www.heroku.com/) through the following steps.
 
 1. Log in to Heroku or create an account if necessary.
-2. Click on the button labeled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop down menu.
+2. Click on the button labeled "New" from the dashboard in the top right corner and select the "Create new app" option in the drop-down menu.
 3. Enter a unique name for the application and select the region you are in.
    * For this project, the unique name is "doctor-diary" and the region selected is Europe.
 4. Click on "create app".
 5. Navigate to the settings tab and locate the "Config Vars" section and click "Reveal config vars".
-6. Add a config var (if project uses creds.json file.)
+6. Add a config var (if the project uses creds.json file.)
    * In the "KEY" field:
       * enter "CREDS" in capital letters.
    * In the "VALUE" field:
@@ -482,19 +482,19 @@ The deployment of the project was done using [Heroku](https://www.heroku.com/) t
 10. Add another buildpack and select Nodejs then save changes again.
 11. Ensure that the python buildpack is above the Nodejs buildpack.
 12. Navigate to the "Deploy" section by clicking the "Deploy" tab in the top navbar.
-13. Select "GitHub" as the deployment method and click "Connect to github".
+13. Select "GitHub" as the deployment method and click "Connect to GitHub".
 14. Search for the GitHub repository name in the search bar.
-15. Click on "connect" to link the repository to heroku.
+15. Click on "connect" to link the repository to Heroku.
 16. Scroll down and click on "Deploy Branch".
-17. Once the app is deployed, heroku will notify you and provide a button to view the app.
+17. Once the app is deployed, Heroku will notify you and provide a button to view the app.
 
-NB - If you wish to rebuild the deployed app automatically everytime you push to github, you may click on "Enable Automatic Deploys".
+NB - If you wish to rebuild the deployed app automatically every time you push to GitHub, you may click on "Enable Automatic Deploys".
 
 [Back to top](#contents)
 
 ### Forking The Repository
 
-This can be done to create a copy of the repository. The copy can be viewed and editted without affecting the original repository.
+This can be done to create a copy of the repository. The copy can be viewed and edited without affecting the original repository.
 
 To fork the repository through GitHub, take the following steps:
 1. In the "the-everything-quiz" repository, click on the "fork" tab in the top right corner.
