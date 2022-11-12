@@ -69,7 +69,7 @@ def main_menu():
 
 def search_menu():
     """
-    Displays options to search by date, by name or return to main menu.
+    Displays options to search by date, by name, or return to the main menu.
     """
     clear_tmnl()
     print("Doctor's Diary - Search Menu\n")
@@ -129,7 +129,7 @@ def app_info():
 
 def collect_details():
     """
-    Collects the patients details from other functions
+    Collects the patient's details from other functions
     and adds them to a list that can be appended to the
     appointments sheet after being checked and confirmed.
     """
@@ -155,9 +155,10 @@ def collect_details():
 
 def get_date(reason):
     """
-    Gets the date input from the user and validates that it is in correct
-    format, is not a past date and is available for booking. Requests
-    input untill it is valid or returns to menu if 'Exit' is input.
+    Gets the date input from the user and validates that it is in the correct
+    format, and depending on the argument provided, is not a past date and,
+    is available for booking. Requests input until it is valid or returns
+    to menu if 'Exit' is input.
     """
     clear_tmnl()
     print("Please enter an appointment date in the format of dd/mm/yyyy.")
@@ -197,8 +198,9 @@ def get_date(reason):
 def get_time(data):
     """
     Provides list options of available times and requests input for desired
-    time.If only one time, prompts user to continue or enter a new date.
-    Requests input untill it is valid or returns to menu if 'Exit' is input.
+    time. If only one time is available it prompts the user to continue or
+    enter a new date. Requests input until it is valid or returns to menu
+    if 'Exit' is input.
     """
     clear_tmnl()
     times = get_avail_times(data)
@@ -219,7 +221,7 @@ def get_time(data):
             collect_details()
 
     else:
-        print(f"Below is a list of avaliable times for {data}.\n")
+        print(f"Below is a list of available times for {data}.\n")
         time_input = pyip.inputMenu(times,
                                     prompt="Select a time from the list.\n",
                                     numbered=True,
@@ -234,9 +236,9 @@ def get_time(data):
 def get_avail_times(data):
     """
     Gets return value from get_appts_for_date function for booked times
-    and removes them from the appointment times list to create
-    a list of available times and returns the available times.
-    If current date, past times are removed from available times.
+    and removes them from the appointment times list to create a list of
+    available times and returns the available times. If the current date
+    is input, past times are removed from available times.
     """
     appt_times = ["0800",
                   "0900",
@@ -259,10 +261,10 @@ def get_avail_times(data):
 
 def get_name(name_part):
     """
-    Gets the name input from user and validates that it contains
-    only letters, no spaces and at least 2 letters in length.
-    If user inputs 'Exit', it returns them to menu. Input is
-    requested until it is valid.
+    Gets the name input from the user and validates that it contains
+    only letters, no spaces, and is at least 2 letters in length.
+    If the user inputs 'Exit', it returns them to the main menu.
+    Input is requested until it is valid.
     """
     clear_tmnl()
     if name_part == ("f_name"):
@@ -293,13 +295,14 @@ def check_existing_appts(details):
     """
     Checks the appointment records for the name and date provided
     and if a booking already exists for the details, returns true,
-    otherwise it returns false.
+    otherwise, it returns false.
     """
     detail_date = details[0]
     detail_name = details[2:4]
     date_bookings = get_appts_for_date(detail_date, "bookings")
 
     # Idea on how to implement check came from stackoverflow.
+    # (Link in the readme)
     existing_appt = None
     for booking in date_bookings:
         for i in range(len(booking) - len(detail_name) + 1):
@@ -313,7 +316,7 @@ def confirm_appointment(data):
     """
     Presents the user with the appointment details entered
     and asks for final confirmation to make the booking
-    or cancel. Input is requested untill a valid option
+    or cancel. Input is requested until a valid option
     is input.
     """
     clear_tmnl()
@@ -352,10 +355,10 @@ def update_appts(data):
 
 def book_again_prompt(status):
     """
-    Provides user with option to either re-enter details or enter
+    Provides user with options to either re-enter details or enter
     details for a new booking depending on the confirmation
     status provided from the confirm_appointment function.
-    Input is requested untill it is valid.
+    Input is requested until it is valid.
     """
     if status == "terminated":
         prompt = "Enter new details"
@@ -411,7 +414,7 @@ def search_name(reason):
 def get_appts_for_name(name):
     """
     Gets and returns the appointments booked for the name
-    povided as an argument.
+    provided as an argument.
     """
     all_appts = APPTS.get_all_values()
     name_appts = []
@@ -427,7 +430,7 @@ def get_appts_for_name(name):
 
 def search_date(specification):
     """
-    Defines search_dte variable using current date or returned
+    Defines search_dte variable using the current date or returned
     date depending on the argument provided and passes it to
     get_appts_for_date function to get the relevant records to
     pass to the display_records function.
@@ -453,7 +456,7 @@ def search_date(specification):
 
 def get_appts_for_date(data, required_return):
     """
-    Gets the booked appointments for the date providedand returns
+    Gets the booked appointments for the date provided and returns
     the requested data depending on the argument given for the
     required_return parameter.
     """
@@ -480,7 +483,7 @@ def display_records(records, topic, heads):
     using the argument provided to the topic parameter. If the records
     are empty then it informs the user that no records are available.
     User is then prompted to input options to return to search menu
-    or main menu. Input is requested untill it is valid.
+    or main menu. Input is requested until it is valid.
     """
     clear_tmnl()
     if records == []:
@@ -564,7 +567,7 @@ def cancel_appt(appointment):
     Prompts user to input options to either confirm cancelation or stop it.
     If confirmed, it gets the row number of the appointment to cancel
     and deletes the row from the appointments sheet. If stopped it
-    returns user to main menu.
+    returns the user to the main menu.
     """
     clear_tmnl()
     print(f"Appointment cancelation for:\n")
@@ -616,12 +619,14 @@ def clear_tmnl():
     """
     Clears the terminal when called.
     """
-    os.system("clear")  # Idea taken from a post on slack.
+    # Idea taken from a post on slack.
+    # (Credited in readme)
+    os.system("clear")
 
 
 def main():
     """
-    Runs necessary functions at start of the program.
+    Runs necessary functions at the start of the program.
     """
     dlte_past_appts()
     sort_sheet()
